@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title: whoami
 subtitle: null
 published: true
 ---
@@ -16,8 +16,5 @@ I look after the following products :
  - [DB Developer VM]( http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html)
  - [SQL Developer](oracle.com/sqldeveloper)
  - [Data Modeler](http://www.oracle.com/technetwork/developer-tools/datamodeler/overview/index.html)
- - [REST Data Servies](oracle.com/rest) 
+ - [REST Data Servies](oracle.com/rest)
  - Database REST APIs
-
- 
-
