@@ -1,0 +1,13 @@
+---
+layout: post
+title: SQL Developer Extensions and Eclipse
+date: '2006-05-03T16:15:00.000-07:00'
+author: Kris Rice
+tags:
+- Extensions
+modified_time: '2006-11-15T15:33:11.653-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363329508541121
+blogger_orig_url: http://krisrice.blogspot.com/2006/05/sql-developer-extensions-and-eclipse.html
+---
+
+<br />Want to write an extension to SQL Developer but you only use Eclipse?  There's a post on the forum about how to use Eclipse to write an extension to sql developer so I figured I'd put it here so it's not lost into the of the forum.<br /><br /><br /> This is actually quite easy to setup.  This can be checked by running the shell script with a -x, so bash -x sqldeveloper.  This will show what is being executed<br /><br />First make a run/debug configuration.<br /><ol><br />  <li> Main Tab<br />    <ul><li>Main Class: oracle.ideimpl.Main<br />           <li> Check the Include libraries when searching for a main class checkbox<br />      </ul><br />    <li>Arguments Tab<br />        <ul><li> The paths in the VM arguments should be adjusted to your specifics.  Also if there is a space in the paths they will have to quoted like "C:\Document and Settings\sqldeveloper...."<br  /><br />               <li>VM Arguments: -Dide.product=oracle.sqldeveloper   -Dide.splash.screen=raptor-splash.gif -Xverify:none -Xmx512M -XX:MaxPermSize=128M -Dice.browser.forcegc=false -Dice.pilots.html4.tileOptThreshold=0 -DEDITOR_J2SE_VERSION=1.5 -DINSIGHT_OMIT_HIDDEN=true -Doracle.xdkjava.compatibility.version=9.0.4  -Dide.debug.controller.stack=false -Dceditor.java.parse.small=300 -Dceditor.java.parse.large=1500 -Dide.extension.cpmissing.nowarn=true -Dcompiler.vmargs=-mx512m -Djbo.debugoutput=silent -Djbo.showdebugwarningbanner=false -Dide.config_pathname=/home/klrice/sqldeveloper/jdev/bin/sqldeveloper.conf -Dide.startingcwd=/home/klrice/sqldeveloper/jdev/bin -Dide.user.dir=/tmp<br />         <li> Working directory: choose Other . Then enter the path to <sqldeveloper>/jdev/bin<br />        </ul><br />      <li>Classpath Tab<br />         <ul><li> Add the following ( all paths are relative to <sqldeveloper> ) <br />                 <li> /ide/lib/ide.jar<br />                 <li> /ide/lib/javatools.jar<br />                 <li> /ide/lib/xmlparserv2.jar<br />                 <li> /ide/lib/help4.jar<br />                 <li> /ide/lib/share.jar<br />                 <li> /ide/lib/javax-ide.jar<br />           </ul><br /></ol><br /><br /><br />Now the run configuration is setup and ready to use.  You should now be able to run and debug an extension.

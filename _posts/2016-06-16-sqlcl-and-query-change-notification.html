@@ -1,0 +1,14 @@
+---
+layout: post
+title: SQLcl and Query Change Notification
+date: '2016-06-16T10:23:00.001-07:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-06-16T10:23:38.655-07:00'
+thumbnail: https://1.bp.blogspot.com/-JFS6orDKSGY/V2LKrdDzzbI/AAAAAAAABLo/0sM3w_YmvTstYk7PNU-gUUdqKJ7qOZviwCK4B/s72-c/change_query_notification.gif
+blogger_id: tag:blogger.com,1999:blog-37621059.post-49479976838771813
+blogger_orig_url: http://krisrice.blogspot.com/2016/06/sqlcl-and-query-change-notification.html
+---
+
+The database has had Query Change Notification for a while but to use it required a custom program. Such as Tim outlines on his blog&nbsp;<a href="https://oracle-base.com/articles/10g/dbms_change_notification_10gR2">https://oracle-base.com/articles/10g/dbms_change_notification_10gR2</a><br /><br /><br />Since SQLcl has Nashorn, now it can be integrated with a few lines of javascript to get notified when changes happen. &nbsp;The script is below and posted. &nbsp;The catch is QCN only works on Varchars and Numbers.<br /><br /><br /><br /><br /><a href="http://1.bp.blogspot.com/-JFS6orDKSGY/V2LKrdDzzbI/AAAAAAAABLo/0sM3w_YmvTstYk7PNU-gUUdqKJ7qOZviwCK4B/s1600/change_query_notification.gif" imageanchor="1"><img border="0" src="https://1.bp.blogspot.com/-JFS6orDKSGY/V2LKrdDzzbI/AAAAAAAABLo/0sM3w_YmvTstYk7PNU-gUUdqKJ7qOZviwCK4B/s1600/change_query_notification.gif" /></a><br /><br /><script src="https://gist.github.com/c1109366b3ffbfa1f380c6835ba68116.js"> </script><br />

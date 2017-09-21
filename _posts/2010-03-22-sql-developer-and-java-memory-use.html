@@ -1,0 +1,12 @@
+---
+layout: post
+title: SQL Developer and Java memory use
+date: '2010-03-22T13:35:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2010-03-22T13:35:54.950-07:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-4703697566030388497
+blogger_orig_url: http://krisrice.blogspot.com/2010/03/sql-developer-and-java-memory-use.html
+---
+
+First, this feature in java is not yet production. So if something goes wrong after setting this, back out the changes.<br /><br />SQL Developer is a java application in case you didn't know :)&nbsp; So, we do not manage the memory directly nor do we have the ability to release back to the operating system.&nbsp; This is taken care of by java which does the garbage collection for us.&nbsp; There's many things you can read about tuning the garbage collector (GC)&nbsp; to get it to collect more efficiently.&nbsp; There is a new GC being built and it's in 1.6 u14 +.&nbsp; I've been testing it and unlike the older GC it releases memory back to the operating system.&nbsp; I did a select and fetched a few 1000s rows which were brought into memory. Then I closed the worksheet tab and the Windows task manger showed the memory was released back and sql developer dropped in memory usage. This could help you and I'm told this will be production in a future update of the 1.6 jdk.&nbsp; In the meantime, here's how to enable it.<br /><br />edit the sqldeveloper.conf file and add these lines:<br /><br />AddVMOption -XX:+UnlockExperimentalVMOptions<br />AddVMOption -XX:+UseG1GC<br />AddVMOption -XX:+G1ParallelRSetUpdatingEnabled<br />AddVMOption -XX:+G1ParallelRSetScanningEnabled<br /><br />If you care to read more about the new GC, check this link out: http://java.sun.com/javase/technologies/hotspot/gc/g1_intro.jsp<br /><br />Lastly, remember non-production.

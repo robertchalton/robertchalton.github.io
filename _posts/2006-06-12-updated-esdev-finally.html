@@ -1,0 +1,12 @@
+---
+layout: post
+title: Updated Esdev... finally
+date: '2006-06-12T16:15:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2006-11-15T15:33:11.963-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363332352937893
+blogger_orig_url: http://krisrice.blogspot.com/2006/06/updated-esdev-finally.html
+---
+
+I finally got the esdev.sf.net updated.  The export to excel is updated to spill to the next worksheet when the first one fills up.  It will also now create a sheet which has the sql used to get the data.<br /><br /><br />  To try and minimize the amount of people using command line flag for adding snippets and reports.  I've added a preference pane for each to specify files which contain these.  The preference panes can handle both files and urls.  So a couple examples would be :<br />/Users/klrice/reports.xml<br />C:\reports.xml<br />http://www.jokr.net/reports.xml<br /><br />The only thing to keep in mind for these panes is items are not removed at runtime.  So if something is removed, the only way to see that reflected is to restart the tool.  For the next release, I'll make this type of feature in the tools and have it handle removals.<br /><br />Also there's a preference pane for turning code insight off.  So no more command line flags.<br /><br />I think this center file will work http://umn.dl.sourceforge.net/sourceforge/esdev/center.xml<br /><br />Sourceforge seems to frown on direct linking to files.

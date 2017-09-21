@@ -1,0 +1,12 @@
+---
+layout: post
+title: Custom Snippets in Raptor EA 3 v 897
+date: '2006-01-25T15:04:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2006-11-15T15:33:10.819-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363234378827558
+blogger_orig_url: http://krisrice.blogspot.com/2006/01/custom-snippets-in-raptor-ea-3-v-897.html
+---
+
+<a href="http://www.oracle.com/technology/products/database/project_raptor/index.html">Raptor</a> EA 3 is out build #897.  Here's how to add snippets in this build.  Eventually a UI could be built around managing the snippets and maybe even subscribe via an rss feed but in the mean time give this a try.<br /><br />Adding Custom Snippets:<br /><br />raptor -Draptor.user.snippets=/home/klrice/snippets.xml <br />or edit the raptor.conf file and add <br />AddVMOption -Draptor.user.snippets=/home/klrice/snippets.xml <br /><br /><br />The snippets file should look like this:<br /><pre><br />&lt;?xml version = '1.0' encoding = 'UTF-8'?><br />&lt;snippets><br />  &lt;group category="Kris' custom snippets" language="PLSQL"><br />    &lt;snippet name="Select EMP" description="Too lazy to type it out"><br />      &lt;code>&lt;![CDATA[select * from scott.emp]]></code><br />    &lt;/snippet><br />    &lt;snippet name="Select EMP Local" description="Too lazy to type it out"><br />      &lt;code>&lt;![CDATA[select * from emp]]></code><br />    &lt;/snippet> <br />&lt;/group><br />  &lt;group category="Kris' other snippets" language="PLSQL"><br />    &lt;snippet name="Select DEPT" description="Too lazy to type it out"><br />      &lt;code>&lt;![CDATA[select * from scott.dept]]></code><br />    &lt;/snippet><br /> &lt;/group><br />&lt;/snippets><br /></pre><br />Furthurmore the snippets window will reload eveytime it's opened if the file changes.<br /><br />The Results<br /><img alt="custom_snippets.png" src="http://www.orablogs.com/krice/archives/custom_snippets.png" width="220" height="132" border="0" />

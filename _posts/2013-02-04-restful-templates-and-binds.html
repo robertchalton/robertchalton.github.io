@@ -1,0 +1,14 @@
+---
+layout: post
+title: RESTful Templates and Binds
+date: '2013-02-04T15:12:00.000-08:00'
+author: Kris Rice
+tags:
+- ords
+modified_time: '2015-07-14T08:47:52.539-07:00'
+thumbnail: http://2.bp.blogspot.com/-fcAtS6wAMFU/URA3VDwfRaI/AAAAAAAAAlg/08E6srvMBqA/s72-c/Screen+Shot+2013-02-04+at+2.33.05+PM.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-9062042546353085136
+blogger_orig_url: http://krisrice.blogspot.com/2013/02/restful-templates-and-binds.html
+---
+
+Using a HTTP GET, the passing of variable is quite simple. &nbsp;All that is needed is to make the URI Template include them. &nbsp;I this example "myget?a={a}&amp;b={b}" &nbsp;The values of a and b are converted into a bind variable for use in the sql statement.<br /><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-fcAtS6wAMFU/URA3VDwfRaI/AAAAAAAAAlg/08E6srvMBqA/s1600/Screen+Shot+2013-02-04+at+2.33.05+PM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="431" src="http://2.bp.blogspot.com/-fcAtS6wAMFU/URA3VDwfRaI/AAAAAAAAAlg/08E6srvMBqA/s640/Screen+Shot+2013-02-04+at+2.33.05+PM.png" width="640" /></a></div><br />With this Resource Template definition, the results are<br /><br /><br /><pre class="brush: shell;">$ curl &nbsp;"https://apex.oraclecorp.com/pls/apex/raptor/test/myget?a=hello&amp;b=bye"<br />{"items":[{"a_value":"hello","b_value":"bye"}]}<br /></pre><br /><br />Now a POST is even easier to turn value into binds. &nbsp;Then URI Template in this case is just "mypost". &nbsp;All the posted values are converted into binds.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-QyIyvQwPfkg/URAzZhNcBcI/AAAAAAAAAlY/VuTYJKg9UDU/s1600/Screen+Shot+2013-02-04+at+2.16.42+PM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="456" src="http://3.bp.blogspot.com/-QyIyvQwPfkg/URAzZhNcBcI/AAAAAAAAAlY/VuTYJKg9UDU/s640/Screen+Shot+2013-02-04+at+2.16.42+PM.png" width="640" /></a></div><br />With this Resource Template definition, the results are<br /><br /><br /><pre class="brush: shell;">$ curl -X POST --data "A=hello&amp;B=bye" https://apex.oraclecorp.com/pls/apex/raptor/test/mypost<br />A is a bind value of:<br />hello<br />B is a bind value of:<br />bye<br /><br /></pre><br /><br />Lastly, if you post in JSON those are also converted to bind variable.<br /><br /><pre class="brush: shell;">$ curl -X POST -H "Content-Type: application/json" --data-ascii '{"A":"hello","B":"bye"}' https://apex.oraclecorp.com/pls/apex/raptor/test/mypost<br />A is a bind value of:<br />hello<br />B is a bind value of:<br />bye<br /></pre>

@@ -1,0 +1,13 @@
+---
+layout: post
+title: Node Road show recap.  When to use and not use node.
+date: '2014-06-04T06:33:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2014-06-04T06:33:06.505-07:00'
+thumbnail: http://4.bp.blogspot.com/-6iDWm_SBrD4/U48fTHVWVoI/AAAAAAAAA0w/E_KYw4-oESE/s72-c/Screen+Shot+2014-06-04+at+9.28.51.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-8953793995951997761
+blogger_orig_url: http://krisrice.blogspot.com/2014/06/node-road-show-recap-when-to-use-and.html
+---
+
+<br />I was recently at a Node road show. &nbsp;This was very much like the OTN tour just obvious focused on Node. &nbsp;They had multiple big customers there to share how they used node, what worked, and what doesn't. &nbsp;There were 3 things that stood out for for me about when when to use Node.<br /><br /><b>First</b>, that node is designed for high concurrency low latency. &nbsp;In case you didn't know node has 1 execution thread. &nbsp;Here's a blog that explains it very well, <a href="http://www.aaronstannard.com/post/2011/12/14/Intro-to-NodeJS-for-NET-Developers.aspx">http://www.aaronstannard.com/post/2011/12/14/Intro-to-NodeJS-for-NET-Developers.aspx</a>. &nbsp;That means a simple loop like while(true){} will lock up the entire node server. &nbsp;Now, you may think oracle's OCI is not async so it's all lost. &nbsp;Node takes care of when it's waiting on I/O. &nbsp;While waiting on I/O from the database, node.js will push this work to the queue until there's a response then it comes back to the main thread for more execution.<br /><br /><b>Second</b>, Node as the Front End's Backend. &nbsp;Yahoo and Rakuten&nbsp;was there and explained how they use node to be the buffer from the front end to the "real" backend. &nbsp;This makes a place where the front end developers can use what they know , javascript, and perform server side operations. &nbsp;They can use the same REST based access the browser would use to also access the backend.<br /><br /><b>Third</b>, A lot of people probably know this but is not meant for thing like finance. &nbsp;Here's a simple example that math isn't a main point when it matters. &nbsp;There are plans for Javascript to add a bigdecimal eventually which would remedy this.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-6iDWm_SBrD4/U48fTHVWVoI/AAAAAAAAA0w/E_KYw4-oESE/s1600/Screen+Shot+2014-06-04+at+9.28.51.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-6iDWm_SBrD4/U48fTHVWVoI/AAAAAAAAA0w/E_KYw4-oESE/s1600/Screen+Shot+2014-06-04+at+9.28.51.png" /></a></div><br /><br /><br /><br />

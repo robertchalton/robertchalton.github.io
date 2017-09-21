@@ -1,0 +1,14 @@
+---
+layout: post
+title: SQLcl custom Input prompt and validations
+date: '2016-11-30T15:52:00.000-08:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-11-30T16:14:40.321-08:00'
+thumbnail: https://3.bp.blogspot.com/-j3OaNDuG4S4/WD9hBRUsUgI/AAAAAAAABOM/JCJg4VsIyVQcCOeDWJ5B2MgwrS2GfuHegCK4B/s72-c/Screen%2BShot%2B2016-11-30%2Bat%2B3.28.08%2BPM.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-1347648389386360067
+blogger_orig_url: http://krisrice.blogspot.com/2016/11/sqlcl-custom-input-prompt-and.html
+---
+
+Another quick twitter inspired blog post inspired by the SQLcl account itself.<br /><br /><br /><blockquote class="twitter-tweet" data-lang="en"><div dir="ltr" lang="en">Asked and answered: Do you support the ACCEPT command? YES. <a href="https://t.co/NchmQ6Eegs">pic.twitter.com/NchmQ6Eegs</a></div>— SQLcl (@oraclesqlcl) <a href="https://twitter.com/oraclesqlcl/status/803628051720507393">November 29, 2016</a></blockquote><script async="" charset="utf-8" src="//platform.twitter.com/widgets.js"></script><br />ACCEPT is a great way to get input but validation has to happen elsewhere as there's no hooks to do something like validate a number in a range without running a sql or plsql that does the validation. <br /><br />As I've covered in many examples on this blog and in our <a href="https://github.com/oracle/oracle-db-tools/tree/master/sqlcl/examples">github</a> repo of examples, SQLcl has the ability to do scripting. &nbsp;Using a few lines of javascript, I can prompt, validate, loop waiting for a better answer from the user. &nbsp;This is a very simple example that loops waiting for the correct answer printing a message with each failure. &nbsp;While this is trivial example it shows how easy it could be to have a custom script that prompts for values then with some scripting validate those values and put it into SQLcl's list of variable used for substitutions.<br /><br /><br /><a href="http://3.bp.blogspot.com/-j3OaNDuG4S4/WD9hBRUsUgI/AAAAAAAABOM/JCJg4VsIyVQcCOeDWJ5B2MgwrS2GfuHegCK4B/s1600/Screen%2BShot%2B2016-11-30%2Bat%2B3.28.08%2BPM.png" imageanchor="1"><img border="0" height="238" src="https://3.bp.blogspot.com/-j3OaNDuG4S4/WD9hBRUsUgI/AAAAAAAABOM/JCJg4VsIyVQcCOeDWJ5B2MgwrS2GfuHegCK4B/s400/Screen%2BShot%2B2016-11-30%2Bat%2B3.28.08%2BPM.png" width="400" /></a><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><script src="https://gist-it.appspot.com/http://github.com/oracle/oracle-db-tools/blob/master/sqlcl/examples/customAccept.sql"></script>

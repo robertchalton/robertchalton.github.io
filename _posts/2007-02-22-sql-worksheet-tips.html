@@ -1,0 +1,12 @@
+---
+layout: post
+title: Sql Worksheet Tips
+date: '2007-02-22T21:00:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2007-04-10T07:55:51.940-07:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-7513139783741474592
+blogger_orig_url: http://krisrice.blogspot.com/2007/02/sql-worksheet-tips.html
+---
+
+in a sql worksheet try some of these:<br /><p style="text-indent:20pt;">ctrl-shift-0..9</p>This will pop the 0-9th sql form the history and replace the current sql worksheet contents.<br /><br />The rest need to be run as if they are scripts ( F5 ):<br /><br />Want to change the tab in the worksheet while a script runs to see an easy status.<br /><pre>   set worksheetname hello<br /></pre>Working on APEX or mod_plsql routines?<br /><pre>   set owacgienv on<br />   set getpage on<br />   begin<br />      htp.p('hi');<br />   end;<br />   /<br /></pre>This will make the owa.init_cgi_env before a plsql block and owa.get_page after and print in the script output.<br /><br /><br />Lastly, if you have any issue you can turn debug on with this and then take it to the forums to post and get answers:<br /><p style="text-indent:20pt;">setloglevel oracle INFO</p>

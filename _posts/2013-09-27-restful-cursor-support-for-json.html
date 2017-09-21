@@ -1,0 +1,14 @@
+---
+layout: post
+title: RESTful Cursor support for JSON
+date: '2013-09-27T09:57:00.001-07:00'
+author: Kris Rice
+tags:
+- ords
+modified_time: '2015-07-14T08:47:52.506-07:00'
+thumbnail: http://3.bp.blogspot.com/-j5jYd1L_Mho/UkW4CocccAI/AAAAAAAAAyM/pAZhyWEEhwQ/s72-c/Screen+Shot+2013-09-27+at+12.53.07+PM.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-5758041387726203970
+blogger_orig_url: http://krisrice.blogspot.com/2013/09/restful-cursor-support-for-json.html
+---
+
+Just a real quick blog before I forget. &nbsp;In the latest APEX Listener 2.0.4 patch, there's support for nested cursors. &nbsp;There is two gotchas. &nbsp;First make sure to to disable ( make 0 ) the pagination of the REST definition. &nbsp;The second is this only works at the top level, so not nested nests of nests.<br /><br />This is a very quick example of tables and nested in each table the columns and indexes that tables has.<br /><br /><br /><pre style="brush: sql;">select t.table_name,<br />  <b>cursor</b>(select column_name<br />             from user_tab_cols tc <br />             where tc.table_name = t.table_name) cols ,<br /><br />  <b>cursor</b>(select index_name<br />             from user_indexes i <br />             where i.table_name = t.table_name) indexes<br /> from user_tables t<br /></pre><br /><br />The resulting JSON looks like this.<br /><br /><br /><br /><a href="http://3.bp.blogspot.com/-j5jYd1L_Mho/UkW4CocccAI/AAAAAAAAAyM/pAZhyWEEhwQ/s1600/Screen+Shot+2013-09-27+at+12.53.07+PM.png" imageanchor="1"><img border="0" src="http://3.bp.blogspot.com/-j5jYd1L_Mho/UkW4CocccAI/AAAAAAAAAyM/pAZhyWEEhwQ/s1600/Screen+Shot+2013-09-27+at+12.53.07+PM.png" /></a>

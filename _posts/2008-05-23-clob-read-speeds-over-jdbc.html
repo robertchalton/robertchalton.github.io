@@ -1,0 +1,12 @@
+---
+layout: post
+title: Clob read speeds over jdbc
+date: '2008-05-23T16:13:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2008-05-23T16:40:27.007-07:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-19266991544909798
+blogger_orig_url: http://krisrice.blogspot.com/2008/05/clob-read-speeds-over-jdbc.html
+---
+
+Thought I'd pass on some findings on clob read speed over jdbc.<br /><br />In sqldeveloper , when you select #clob# from #table# the tool shows the first ~80 chars of the clob. I spent part of the last 2 days timing the fastest way to read clobs from the db. I mostly work on remote databases so I notice when network latency start getting high. In looking at java.sql.Clob there's a few way to get the text. I figured I'd test them and see if one was quicker than the other. I wrote a loop that walks all the tables which have clobs in the flow_xxx schema and timed 2 of then methods .getSubString and .getCharacterStream.read().<br /><br />Here's the crux of my test:<br /><pre><br />// method one<br />int read = 80; // only need the first 80 to show<br />start = System.currentTimeMillis();<br />s = lob.getSubString(1, read);<br />long s1 = System.currentTimeMillis() - start;<br /><br />// method two<br />start = System.currentTimeMillis();<br />char[] cbuf = new char[read];<br />lob.getCharacterStream().read(cbuf);<br />long s2 = System.currentTimeMillis() - start;<br /></pre><br /><br /><br />Outcome:<br /><br />Total Rows Processed : 44850<br /><br />Lobs ranged in size from null to 17k with the average working out to 114<br /><br />Not surprisingly, when the LAN speeds were averaged out it was 0 and 0<br /><br />However, over the slower connection .getSubString's average was 102ms and the read was 197ms.

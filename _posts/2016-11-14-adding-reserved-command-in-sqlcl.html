@@ -1,0 +1,14 @@
+---
+layout: post
+title: Adding Reserved command in SQLcl
+date: '2016-11-14T06:27:00.000-08:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-11-30T16:14:40.349-08:00'
+thumbnail: https://3.bp.blogspot.com/-d_SGmHi6XXY/WCnIIj7V84I/AAAAAAAABNM/Vh5UkaTJRKwr1Z2DryuaCOovJ59-S867ACK4B/s72-c/Screen%2BShot%2B2016-11-14%2Bat%2B09.20.08.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-5823790857172077427
+blogger_orig_url: http://krisrice.blogspot.com/2016/11/adding-reserved-command-in-sqlcl.html
+---
+
+<br />I saw Stephen's example of checking reserved words in the database from Vertan's day and figured I'd do the same in SQLcl.<br /><br /><blockquote class="twitter-tweet" data-lang="en"><div dir="ltr" lang="en">#595 <a href="https://twitter.com/hashtag/plsql?src=hash">#plsql</a> Is it a reserved word? PL/SQL procedure to help you sort that out. Dyn PLSQL example! <a href="https://twitter.com/oraclelivesql">@oraclelivesql</a> <a href="https://t.co/M10kVnsQ3y">https://t.co/M10kVnsQ3y</a> <a href="https://t.co/XFFHOVzNCK">pic.twitter.com/XFFHOVzNCK</a></div>— Steven Feuerstein (@sfonplsql) <a href="https://twitter.com/sfonplsql/status/797153176243859456">November 11, 2016</a></blockquote><script async="" charset="utf-8" src="//platform.twitter.com/widgets.js"></script><br />Checked if something is reserved seems like a nice add on for the tooling. &nbsp;This example adds a SQL&gt;reserved command that checks all words passed to see if they are in the single source of truth which is v$reserved_words<br /><br /><br />The outcome is something like this.<br /><br /><a href="http://3.bp.blogspot.com/-d_SGmHi6XXY/WCnIIj7V84I/AAAAAAAABNM/Vh5UkaTJRKwr1Z2DryuaCOovJ59-S867ACK4B/s1600/Screen%2BShot%2B2016-11-14%2Bat%2B09.20.08.png" imageanchor="1"><img border="0" height="310" src="https://3.bp.blogspot.com/-d_SGmHi6XXY/WCnIIj7V84I/AAAAAAAABNM/Vh5UkaTJRKwr1Z2DryuaCOovJ59-S867ACK4B/s640/Screen%2BShot%2B2016-11-14%2Bat%2B09.20.08.png" width="640" /></a><br /><br /><br /><br />The code is in the normal location on github. &nbsp;It follows the same CommandRegistry/CommandListener that was used in lots of the previous examples. <br /><br /><br /><script src="https://gist-it.appspot.com/http://github.com/oracle/oracle-db-tools/blob/master/sqlcl/examples/reserved.js"></script>

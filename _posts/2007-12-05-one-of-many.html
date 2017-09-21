@@ -1,0 +1,13 @@
+---
+layout: post
+title: One of many ...
+date: '2007-12-05T11:20:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2008-12-08T13:13:19.841-08:00'
+thumbnail: http://2.bp.blogspot.com/_HTPuwjEAZfk/R1b2mdG86xI/AAAAAAAAAFQ/WsXRDx8K_9I/s72-c/screenshot.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-3226615981197450180
+blogger_orig_url: http://krisrice.blogspot.com/2007/12/one-of-many.html
+---
+
+<p>There's lots of little things in the upcoming release of sqldev. Frank's <a href="http://thepeninsulasedge.com/frank_nimphius/2007/12/05/in-preparation-for-javapolis-2007-dvt-gauge-component/">post</a> reminded me of one that I forgot to show at openworld. We have support for the same DVT Gauge component that he mentions in sqldev's next version. However, all you have to do is write a sql statement. It's really simple to use. For example, I took the <a href="http://asktom.oracle.com/~tkyte/Misc/free.html">free space report</a> from Tom Kyte and added guages.<a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://2.bp.blogspot.com/_HTPuwjEAZfk/R1b2mdG86xI/AAAAAAAAAFQ/WsXRDx8K_9I/s1600-h/screenshot.png"></a></p><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://2.bp.blogspot.com/_HTPuwjEAZfk/R1b2mdG86xI/AAAAAAAAAFQ/WsXRDx8K_9I/s1600-h/screenshot.png"></a><br /><p><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://2.bp.blogspot.com/_HTPuwjEAZfk/R1b2mdG86xI/AAAAAAAAAFQ/WsXRDx8K_9I/s1600-h/screenshot.png"><img style="cursor:pointer; cursor:hand;" src="http://2.bp.blogspot.com/_HTPuwjEAZfk/R1b2mdG86xI/AAAAAAAAAFQ/WsXRDx8K_9I/s320/screenshot.png" border="0" alt="" /></a><br /></p><br /><p>The only you'll need to do in sqldev is select the correct value and it'll turn it into a gauge. In the base sql, the percent used is</p><br /><p>((kbytes_alloc-nvl(kbytes_free,0))/ kbytes_alloc)*100 pct_used " .</p><br /><p>In order to make it more graphical I just changed it to this</p><br /><p>'SQLDEV:GAUGE:0:100:0:0:'||((kbytes_alloc-nvl(kbytes_free,0))/ kbytes_alloc)*100 pct_used</p><br /><p>The SQLDEV:GAUGE trigger the check for values. The first 2 numbers are the min and max values. The next 2 are the low and high values. Lastly, the current value to plot.</p><br /><br />

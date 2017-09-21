@@ -1,0 +1,15 @@
+---
+layout: post
+title: SDSQL - Output Formats
+date: '2014-12-17T13:55:00.000-08:00'
+author: Kris Rice
+tags:
+- sdsql
+- sqlcl
+modified_time: '2016-06-10T13:03:58.843-07:00'
+thumbnail: http://2.bp.blogspot.com/-3WMslldqjfM/VJH5L_T40EI/AAAAAAAAA5w/G-j3qfHicaQ/s72-c/sqlformat.gif
+blogger_id: tag:blogger.com,1999:blog-37621059.post-6322835076155364383
+blogger_orig_url: http://krisrice.blogspot.com/2014/12/sdsql-output-formats.html
+---
+
+&nbsp; &nbsp;In SQL Developer,&nbsp;<a href="http://twitter.com/thatjeffsmith">Jeff</a> has shown in many tips &amp; tricks talks and <a href="http://www.thatjeffsmith.com/archive/2012/05/formatting-query-results-to-csv-in-oracle-sql-developer/">here</a> on his blog how to get data from any select into a few formats. &nbsp;The most common I would say is csv. &nbsp; Nothing here has changed. Well, almost. &nbsp;What will be new is the html format is getting a facelift and a json format is being added neither are in the version of sdsql or sql developer that are on otn yet<br /><br />&nbsp; &nbsp; As expected all those "hint" work in sdsql as well. &nbsp;What's new is there is a "set sqlformat" command so that all results come out in that format. So, all the same formats work : xml, html, delimited, insert, loader, fixed, text.  Also there's a new one named ansiconsole which is described <a href="http://krisrice.blogspot.com/2014/12/sql-developer-41-ea1-is-out.html">here</a>.<br /><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-3WMslldqjfM/VJH5L_T40EI/AAAAAAAAA5w/G-j3qfHicaQ/s1600/sqlformat.gif" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-3WMslldqjfM/VJH5L_T40EI/AAAAAAAAA5w/G-j3qfHicaQ/s1600/sqlformat.gif" /></a></div><br /><br /><br />&nbsp; Now with the new things being added it could be easy to create a "build" script of sorts. &nbsp;Combine this with the new <a href="http://krisrice.blogspot.com/2014/12/getting-information-and-ddl-about.html">ddl command</a>&nbsp;into something like this<br /><br /><pre class="brush: sql;">SQL&gt;set sqlformat insert<br />SQL&gt;spool my_build_script.sql<br />SQL&gt;ddl emp<br />SQL&gt;select * from emp;<br />SQL&gt;apex export 101<br />SQL&gt;spool off<br /></pre><br />What you would end up with out of this is a sql script with the ddl and data for emp and the Apex App export. &nbsp;This script could then be checked in, given to a DBA, or even just for a nightly backup of sorts.

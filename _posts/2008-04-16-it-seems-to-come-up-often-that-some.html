@@ -1,0 +1,13 @@
+---
+layout: post
+title: Which tnsnames?
+date: '2008-04-16T08:41:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2008-12-08T13:13:19.244-08:00'
+thumbnail: http://2.bp.blogspot.com/_HTPuwjEAZfk/SAYeQOftOrI/AAAAAAAAAFw/vx9Q2xzf-dY/s72-c/tnsnames_ora.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-6681118088599851646
+blogger_orig_url: http://krisrice.blogspot.com/2008/04/it-seems-to-come-up-often-that-some.html
+---
+
+It seems to come up often that some people are unsure where the list of connections get picked up from. So, if your not sure which tnsnames file sqldev is using try this:<br /><br />1) Open any worksheet<br /><br />Sqldev just needs someplace to process the next command and doesn't actually use the connection for anything.<br /><br />2) Enter : setloglevel oracle.dbtools.raptor.utils INFO<br /><br />This sets the java logging level on for this package so you can avoid putting the entire tool into debug and being inundated withe log messages. setloglevel is something I put in to help debugging using the same method I had blogged on before.<br /><br />3) open the new connection dialog<br /><br />The tnsnames are read everytime the dialog opens. This is handy for testing changes to the tns files.<br /><br />4) check the log<br /><br />You should end up with something like this. The log will show where it's checking for the tnsnames.<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://2.bp.blogspot.com/_HTPuwjEAZfk/SAYeQOftOrI/AAAAAAAAAFw/vx9Q2xzf-dY/s1600-h/tnsnames_ora.png"><img style="cursor:pointer; cursor:hand;" src="http://2.bp.blogspot.com/_HTPuwjEAZfk/SAYeQOftOrI/AAAAAAAAAFw/vx9Q2xzf-dY/s320/tnsnames_ora.png" border="0" alt=""id="BLOGGER_PHOTO_ID_5189868884708899506" /></a>

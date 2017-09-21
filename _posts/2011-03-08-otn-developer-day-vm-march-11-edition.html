@@ -1,0 +1,12 @@
+---
+layout: post
+title: OTN Developer Day VM March '11 Edition
+date: '2011-03-08T16:44:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2011-03-08T16:44:44.268-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-3613881327092979461
+blogger_orig_url: http://krisrice.blogspot.com/2011/03/otn-developer-day-vm-march-11-edition.html
+---
+
+The Database VM was just updated. &nbsp;You can get it here: <a href="http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html">http://www.oracle.com/technetwork/database/enterprise-edition/databaseappdev-vm-161299.html</a><br /><br />Quick reminder that this VM is only-a-sandbox. &nbsp;All passwords are oracle, for that an other reasons this is never to be used for any purposed other than a sandbox.<br /><br />The main changes in this VM are:<br />- New OBEs!<br />- Upgraded DB to 11.2.0.2<br />- SQL Developer 3.0 EA3<br />- Application Express Listener 1.1<br />- Application Express 4.0.2<br />- Times Ten 11.2<br /><br /><br />Also, Todd suggested I outline the steps to create this VM incase other wanted to make a custom one. &nbsp;These are my steps for this. &nbsp;If anyone has better suggestions, please let me know and I can use that in the next revamp.<br /><br /><br />1) Use Default wizards for new VM with 1 drive for the OS.<br /><br />2) Install OEL<br /><br />3) Remove some things like printing to save space.<br /><br />4) Install the VirtualBox tools<br /><br />5) Create a 2nd harddrive for the database install. &nbsp;I mount this new drive to /home/oracle. &nbsp;Then add the oracle user with that has his home directory.<br /><br />6) Next clean up some space before exporting the VM by running these commands:<br />&nbsp;&nbsp; &nbsp;dd if=dev/zero of=/bigemptyfile<br />&nbsp;&nbsp; &nbsp;dd if=dev/zero of=/oracle_mount/bigemptyfile<br />- This zeros out the unused space which I've found helps with the export sizes.<br /><br />7) Remove those files.<br /><br />8) Shutdown and Export the appliance.<br /><br />9) Share with anyone who'd like it.<br /><br />After this the result is what you see on OTN, a 4.3G download that is everything setup and configured. &nbsp;The best thing about this is that the VM is a sandbox so when it's messed up for any reason. &nbsp;Delete and Reimport the VM and it's back to square one.<br />

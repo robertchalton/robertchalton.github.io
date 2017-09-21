@@ -1,0 +1,13 @@
+---
+layout: post
+title: Drillable Reports
+date: '2006-03-16T15:08:00.000-08:00'
+author: Kris Rice
+tags:
+- Extensions
+modified_time: '2006-11-15T15:33:11.509-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363290994135187
+blogger_orig_url: http://krisrice.blogspot.com/2006/03/drillable-reports.html
+---
+
+Sue <a href="http://www.groundside.com/blog/content/SueHarper/Other+Unrelated+Musings/2006/02/20/RMOUG-and-Click-Through-Reports.html">blogged </a> about how some reports have drill thru ability to get the underlying object.  This rasises the question of how can I do that to my report which lists my most interesting objects?<br /><br />The answer to this is very simple.  Here's an example which is simple query of which object were altered most recently and makes it a drill thru.<br /><br /><br />This SQL run in the worksheet gives you a list of object. <br />select owner,<br />       object_type,<br />       object_name,<br />       last_ddl_time <br />from all_objects ao<br />where owner <> 'SYS'<br />order by last_ddl_time desc;<br /><br />Instead of then finding your way to that object in the tree let's make it drill thru.  This is done very easily by adding a few columns.<br />select owner,<br />       object_type,<br />       object_name,<br />       last_ddl_time <b>,<br />       owner sdev_link_owner,<br />       object_type sdev_link_type,<br />       object_name sdev_link_name  </b><br />from all_objects ao<br />where owner <> 'SYS'<br />order by last_ddl_time desc;<br /><br /><br />The fist thing that is obvious will be that these columns will not show in the results.  Now when the query is run and a row is double clicked you will be taken to that object.  The only catches are it has to be an object which is supported ( basically see the tree ) and you must have access.  Before anyone askes there is currently no way to go to tab #X of the object. <br /><br />I'm sure someone can make better use of this for things like my largest object report or maybe a report on V$DB_OBJECT_CACHE<br /><br />This can be used in the worksheet or in the sql of a report.

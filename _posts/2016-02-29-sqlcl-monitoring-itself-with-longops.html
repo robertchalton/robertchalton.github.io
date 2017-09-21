@@ -1,0 +1,14 @@
+---
+layout: post
+title: SQLCL Monitoring itself with Longops
+date: '2016-02-29T07:54:00.001-08:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-06-10T13:03:58.834-07:00'
+thumbnail: https://2.bp.blogspot.com/-FgypJxfmYdA/VtRpfWbiceI/AAAAAAAABJ4/VpLPHzD0VXg/s72-c/longops.gif
+blogger_id: tag:blogger.com,1999:blog-37621059.post-4774674455822438214
+blogger_orig_url: http://krisrice.blogspot.com/2016/02/sqlcl-monitoring-itself-with-longops.html
+---
+
+Longops is a great way to monitor things that take some time to do work. &nbsp;There's an easy example of using longops on <a href="https://oracle-base.com/articles/8i/dbms_application_info#set_session_longops">oracle-base here</a>. &nbsp;I borrowed the script from there and put it into a file named my_slow_thing.sql. &nbsp;Now here's a nice example of what's possible with sqlcl.<br /><br /><br /><script src="http://gist-it.appspot.com/https://github.com/oracle/Oracle_DB_Tools/blob/master/sqlcl/examples/longops.js"></script><br /><br />The easy way to using this is add it to your login.sql which is what I did.  Of course the script could run at anytime instead of in the login.sql<br /><br /><pre class="brush:sql;">script longops.js klrice klrice<br /></pre><br />The results<br /><br /><br /><a href="http://2.bp.blogspot.com/-FgypJxfmYdA/VtRpfWbiceI/AAAAAAAABJ4/VpLPHzD0VXg/s1600/longops.gif" imageanchor="1"><img border="0" src="https://2.bp.blogspot.com/-FgypJxfmYdA/VtRpfWbiceI/AAAAAAAABJ4/VpLPHzD0VXg/s1600/longops.gif" /></a>

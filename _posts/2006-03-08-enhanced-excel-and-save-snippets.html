@@ -1,0 +1,12 @@
+---
+layout: post
+title: Enhanced Excel and Save Snippets
+date: '2006-03-08T15:08:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2006-11-15T15:33:11.282-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363275072722117
+blogger_orig_url: http://krisrice.blogspot.com/2006/03/enhanced-excel-and-save-snippets.html
+---
+
+<br />I just updated the files out on esdev.sf.net.<br />Here's the changes in the export to Excel:<br />  <ul><br />    <li>Print column names into a frozen row<br />    <li>Now it can be canceled<br />    <li>Remembers last file<br />    <li>Number are truely number in the cells<br /></ul><br /><br />There's also some new stuff around snippets.<br /><br /><br />I've added the ability to hightligh some text in the worksheet and save it as a snippet so it can be easily referenced later.  It's pretty simple take as you will see<br /><br /><br />First select the text to be saved in the worksheet.<br /><img alt="save_snippet.png" src="http://www.orablogs.com/krice/archives/save_snippet.png" border="0"/><br /><br /><br /><br />Now give it a name , category and description.<br /><img alt="save_snippet_dialog.png" src="http://www.orablogs.com/krice/archives/save_snippet_dialog.png" border="0"/><br /><br /><br />Now use it.<br /><img alt="save_snippet_window.png" src="http://www.orablogs.com/krice/archives/save_snippet_window.png" border="0"/><br /><br />This will save the file into ~/.snippets.xml<br /><br />This file is added different than my previous blog on snippets.  It uses <br />SnippetAddin.registerSnippet(SnippetController.snippetFile.toURL());<br /><br />This call could be used by other extensions to add custom snippets more easily.<br /><br />There's a similar call to add reports by bunlding an xml  compliant file to your jar file<br />ReportAddin.registerSnippet(someUrlObject);

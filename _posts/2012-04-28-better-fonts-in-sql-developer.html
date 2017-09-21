@@ -1,0 +1,13 @@
+---
+layout: post
+title: Better Fonts in SQL Developer
+date: '2012-04-28T09:05:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2012-04-28T09:05:47.461-07:00'
+thumbnail: http://4.bp.blogspot.com/-fJ0vD4Rv8Ec/T5wT6Zo95yI/AAAAAAAAAf8/6EBgWMKaraY/s72-c/Screen+Shot+2012-04-28+at+8.57.17+AM.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-2814361608346314540
+blogger_orig_url: http://krisrice.blogspot.com/2012/04/better-fonts-in-sql-developer.html
+---
+
+<div class="separator" style="clear: both; text-align: center;"></div><div style="text-align: left;"><a href="https://twitter.com/#!/narciblog/status/196259135824736257">@narciblog</a>&nbsp;asked about better font support in SQL Developer. &nbsp;It appears I never noticed that Anti-Aliased is not the default. &nbsp;Here's a screen shot of the default that installs today.</div><br /><div class="separator" style="clear: both; text-align: center;"><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-fJ0vD4Rv8Ec/T5wT6Zo95yI/AAAAAAAAAf8/6EBgWMKaraY/s1600/Screen+Shot+2012-04-28+at+8.57.17+AM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-fJ0vD4Rv8Ec/T5wT6Zo95yI/AAAAAAAAAf8/6EBgWMKaraY/s1600/Screen+Shot+2012-04-28+at+8.57.17+AM.png" /></a></div><br />Now, add 2 lines to the sqldeveloper.conf file<br /><br /><br />AddVMOption -Dawt.useSystemAAFontSettings=on<br />AddVMOption -Dswing.aatext=true<br /><br /><br />Then you get a much nicer looking font.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-uVIT_lN3lZo/T5wT6gFRw6I/AAAAAAAAAgE/JHzGEzFx1fk/s1600/Screen+Shot+2012-04-28+at+8.58.03+AM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-uVIT_lN3lZo/T5wT6gFRw6I/AAAAAAAAAgE/JHzGEzFx1fk/s1600/Screen+Shot+2012-04-28+at+8.58.03+AM.png" /></a></div><br /><br /><div style="text-align: left;">This is probably the quickest and&nbsp;easiest&nbsp;tip I've given so far.&nbsp;</div><div style="text-align: left;"><br /></div><br /><br /><div class="separator" style="clear: both; text-align: left;">The gory details are here :&nbsp;<a href="http://docs.oracle.com/javase/6/docs/technotes/guides/2d/flags.html#aaFonts">http://docs.oracle.com/javase/6/docs/technotes/guides/2d/flags.html#aaFonts</a></div><div><br /></div>

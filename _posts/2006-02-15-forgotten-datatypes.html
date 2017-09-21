@@ -1,0 +1,13 @@
+---
+layout: post
+title: Forgotten datatypes
+date: '2006-02-15T15:06:00.000-08:00'
+author: Kris Rice
+tags:
+- Extensions
+modified_time: '2006-11-15T15:33:10.970-08:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-116363245704286828
+blogger_orig_url: http://krisrice.blogspot.com/2006/02/forgotten-datatypes.html
+---
+
+After seeing the <a href="http://sourceforge.net/project/screenshots.php?group_id=158162&#38;ssid=27419">Georaptor </a> project, I figured SQL Developer could use a method for rendering custom datatypes.  Here's a quick example of how this is now possible in EA4.<br /><br />The first thing is to make a class which is an Addin which registers the custom renderer.<br /><br /><br />import oracle.dbtools.raptor.controls.cellrenderers.CellRenderingFactory;<br />import oracle.ide.Addin;<br />import oracle.sql.CLOB;<br /><br />public class CustomColRendererAddin implements Addin{<br /><br />	public void initialize() {<br />		// register the custom renderer<br />		CellRenderingFactory.registerCellRenderer(CLOB.class, new CLOBRenderer());<br />		<br />	}<br />}<br /><br /><br /><p>Next the actual renderer.  This is a very simple example.  The ICellRenderer  interface has 2 methods on it.  The getComponent is called first.  If nothing is returned from any of the registered addins the getText is called next and will just be used in the standard component.<br /> <br /><br /><br />import java.awt.Component;<br />import javax.swing.JLabel;<br />import javax.swing.JTable;<br />import oracle.dbtools.raptor.controls.cellrenderers.ICellRenderer;<br />import oracle.sql.CLOB;<br /><br />public class CLOBRenderer implements ICellRenderer {<br /><br />	public String getText(JTable table, Object value,<br />			boolean isSelected, boolean hasFocus, int row, int column) {<br />		// if getComponent returns null<br />		// get text will be called to get the text for to be placed in the <br />		// default component<br />		return null;<br />	}<br /><br />	public Component getComponent(JTable table, Object value,<br />			boolean isSelected, boolean hasFocus, int row, int column) {<br />		// <br />		Component ret = null;<br />		CLOB lob = (CLOB) value;<br />		try {<br />			JLabel l = new JLabel(lob.getSubString(1,20));<br />                        // the only real difference over the base renderer<br />                        // is the added tooltip<br />			l.setToolTipText(lob.getSubString(1,1000));<br />			ret = l;<br />		} catch (Exception e) {			<br />			e.printStackTrace();<br />		}<br />		return ret;<br />	}<br /><br />}<br /><br /><br />The end results....<br /><br /><img alt="clob_tt.png" src="http://www.orablogs.com/krice/archives/clob_tt.png" width="239" height="269" border="0" />

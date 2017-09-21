@@ -1,0 +1,14 @@
+---
+layout: post
+title: Kill DB sessions the easy way with SQLcl
+date: '2016-06-22T12:37:00.000-07:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-11-30T16:14:40.338-08:00'
+thumbnail: https://2.bp.blogspot.com/-FuPF2lKJMeM/V2rlObbsaOI/AAAAAAAABL4/QNtxEWWEn5cwL5lqcSJQmQ04_G-xf2lwgCK4B/s72-c/diy_kill.gif
+blogger_id: tag:blogger.com,1999:blog-37621059.post-3039162272733822097
+blogger_orig_url: http://krisrice.blogspot.com/2016/06/kill-db-sessions-easy-way-with-sqlcl.html
+---
+
+Seems I can not tweet these animated GIFs anymore. So this is another very short blog post to show real case for adding a new command into <a href="http://twitter.com/oraclesqlcl">SQLcl</a>&nbsp;which can be <a href="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html">downloaded here</a>.<br /><br />It's <strike>hard</strike> <strike>annoying</strike> tedious to find SID and SESSION then alter to kill that when needed. &nbsp;What if there was a simple kill command.<br /><br />Here a sample one that takes in the 2 options:<br />&nbsp; kill sid serial# <br />&nbsp; Example : &nbsp; kill 1 2<br />OR<br />&nbsp; kill USERNAME<br />&nbsp; Example: kill KLRICE<br /><br /><br /><br /><a href="http://2.bp.blogspot.com/-FuPF2lKJMeM/V2rlObbsaOI/AAAAAAAABL4/QNtxEWWEn5cwL5lqcSJQmQ04_G-xf2lwgCK4B/s1600/diy_kill.gif" imageanchor="1"><img border="0" height="444" src="https://2.bp.blogspot.com/-FuPF2lKJMeM/V2rlObbsaOI/AAAAAAAABL4/QNtxEWWEn5cwL5lqcSJQmQ04_G-xf2lwgCK4B/s640/diy_kill.gif" width="640" /></a><br /><br /><br /><br /><script src="https://gist-it.appspot.com/http://github.com/oracle/oracle-db-tools/blob/master/sqlcl/examples/kill.js"></script><br />

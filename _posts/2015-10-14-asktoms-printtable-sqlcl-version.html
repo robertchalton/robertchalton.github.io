@@ -1,0 +1,14 @@
+---
+layout: post
+title: AskTom's print_table - SQLCL version
+date: '2015-10-14T15:22:00.001-07:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-06-10T13:03:58.852-07:00'
+thumbnail: http://2.bp.blogspot.com/-7crVL8Cn8AU/Vh7VLVbGR_I/AAAAAAAABH4/n5f7wkoHgTk/s72-c/Screen%2BShot%2B2015-10-14%2Bat%2B18.20.12.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-7047749277933359324
+blogger_orig_url: http://krisrice.blogspot.com/2015/10/asktoms-printtable-sqlcl-version.html
+---
+
+There was an idea logged over on <a href="https://community.oracle.com/ideas/3457">community.oracle.com </a>to add AskTom style print_table to sqlcl.<br /><br />Here's how easy it is now that there's scripting in sqlcl. &nbsp;This is a simple js file that loops over the rows and columns and prints them. &nbsp;When using the executeReturnListofList the first row is the name of the columns for reference. &nbsp;With that data there it's quite simple to customize any output.<br /><br /><br /><br /><pre class="brush:javascript;">/* rebuild the sql passed in since args is split on spaces */<br /><br />var sql="";<br />for(var i=1;i&lt;args.length;i++){<br />  sql = sql + " " + args[i];<br />}<br />ctx.write(sql + "\n\n");<br /><br /><br />var ret = util.executeReturnListofList(sql,null);<br /><br />/* loop the rows */<br />for (var i = 0; i &lt; ret.size(); i++) {<br />    ctx.write('&gt;ROW \n'); <br />    /*loop the cols */<br />    for( var ii=0;ii&lt;ret[i].size();ii++) {<br />        ctx.write("\t" + ret[0][ii] + " : " + ret[i][ii] + "\n");<br />    } <br />}<br /><br />ctx.write('\n\n');<br /><br /><br /><br /></pre><br />Now running it is very simple. &nbsp;Script printtab select......<br /><br /><br /><div class="separator" style="clear: both; text-align: left;"><a href="http://2.bp.blogspot.com/-7crVL8Cn8AU/Vh7VLVbGR_I/AAAAAAAABH4/n5f7wkoHgTk/s1600/Screen%2BShot%2B2015-10-14%2Bat%2B18.20.12.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-7crVL8Cn8AU/Vh7VLVbGR_I/AAAAAAAABH4/n5f7wkoHgTk/s1600/Screen%2BShot%2B2015-10-14%2Bat%2B18.20.12.png" /></a></div><br />

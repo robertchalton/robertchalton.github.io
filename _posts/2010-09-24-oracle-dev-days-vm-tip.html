@@ -1,0 +1,12 @@
+---
+layout: post
+title: Oracle Dev Days vm tip
+date: '2010-09-24T11:40:00.000-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2010-10-20T11:25:12.646-07:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-6595963075320626266
+blogger_orig_url: http://krisrice.blogspot.com/2010/09/oracle-dev-days-vm-tip.html
+---
+
+We passed out a few thousand of these DVDs at OpenWorld this week. &nbsp;I thought I'd pass on a little tip I use to easier connect from the host to the database inside the guest.<br /><br /><br />I setup my host's port 1521 to forward into the vm to simplify the connect. &nbsp;Here's the command to issue on the host in my case my mac.<br /><br /><pre class="brush: bash">Kris-Rices-MacBook-Pro:~ klrice$ VBoxManage modifyvm "Oracle Developer Days" &nbsp;--natpf1 "tns,tcp,127.0.0.1,1521,,1521"<br /><br /></pre><br />Now anything going to 1521 on the host will be forwarded into the guest. &nbsp;Here's sqlplus working on the host machine.<br /><br /><br /><pre class="brush: bash">Kris-Rices-MacBook-Pro:~ klrice$ sqlplus system/oracle<br />SQL*Plus: Release 10.2.0.4.0 - Production on Fri Sep 24 11:29:03 2010<br />Copyright (c) 1982, 2007, Oracle.  All Rights Reserved.<br /><br />Connected to:<br />Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production<br />With the Partitioning, OLAP, Data Mining and Real Application Testing options<br /><br />SQL&gt; select 1 from dual;<br />  1<br />----------<br />  1<br /></pre>

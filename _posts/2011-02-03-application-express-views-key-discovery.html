@@ -1,0 +1,13 @@
+---
+layout: post
+title: Application Express Views - Key discovery part 2
+date: '2011-02-03T14:42:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2011-02-03T14:42:29.788-08:00'
+thumbnail: http://3.bp.blogspot.com/_HTPuwjEAZfk/TUspRUMzHCI/AAAAAAAAAYs/3B6igbQrYek/s72-c/change_name.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-5577168294678035990
+blogger_orig_url: http://krisrice.blogspot.com/2011/02/application-express-views-key-discovery.html
+---
+
+<a href="http://krisrice.blogspot.com/2011/02/data-dictionary-posters-and-automatic.html">Yesterday</a>, I showed how the new&nbsp;Foreign&nbsp;Key discovery works on a subset of dba views. &nbsp;The only catch was that the end result had T_DBA_ &nbsp;prefixes for the names. &nbsp;It's really easy to change that.<br /><br />Once you import the views and convert them to tables, delete the views. &nbsp;What you are left with is a bunch of tables prefixed with T_ . &nbsp;Now right click on the relational model in the tree and choose Change Object Names Prefix.<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_HTPuwjEAZfk/TUspRUMzHCI/AAAAAAAAAYs/3B6igbQrYek/s1600/change_name.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="219" src="http://3.bp.blogspot.com/_HTPuwjEAZfk/TUspRUMzHCI/AAAAAAAAAYs/3B6igbQrYek/s320/change_name.png" width="320" /></a></div><br />This is a simple dialog, much like a search and replace. &nbsp;Enter the old, the new, and what object types it applies to and everything is back to the base names you'd expect in a diagram.<br /><div class="separator" style="clear: both; text-align: center;"></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_HTPuwjEAZfk/TUsundNCOeI/AAAAAAAAAY0/XglBxdPP8E4/s1600/change_prefix_dialog.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="252" src="http://1.bp.blogspot.com/_HTPuwjEAZfk/TUsundNCOeI/AAAAAAAAAY0/XglBxdPP8E4/s320/change_prefix_dialog.png" width="320" /></a></div><br />The end result is a model of all the APEX_ views for 4.0. <br /><br /><a href="https://dl.dropbox.com/u/12188201/apex_views.pdf">Oracle Application Express Views</a>  <iframe height="400" src="https://dl.dropbox.com/u/12188201/apex_views.pdf" width="900"></iframe>

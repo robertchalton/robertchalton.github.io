@@ -1,0 +1,12 @@
+---
+layout: post
+title: Process a zip file
+date: '2007-05-15T16:02:00.001-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2007-05-15T16:02:18.820-07:00'
+blogger_id: tag:blogger.com,1999:blog-37621059.post-4229120908471802635
+blogger_orig_url: http://krisrice.blogspot.com/2007/05/process-zip-file.html
+---
+
+Some one on the <a href="http://forums.oracle.com/forums/thread.jspa?messageID=1837955#1837955">forum</a> asked for an example of how to bulk upload files.  <a href="http://kristopher.rice.googlepages.com/LoadZip.java">Here</a> is an example I used a couple years ago of processing a zip file and uploading the individual files into a table.  Then we made an application to manage the file and followed <a href="http://download-west.oracle.com/docs/cd/B32472_01/doc/appdev.300/b32469/up_dn_files.htm#CHDCGIEF">"Create a Procedure to Download Documents" </a> to download.<br /><br />Here's the sql for the table and sequence:<br /><br />create table docs(doc_id number,blob_content blob,file_name varchar2(2000));<br /><br />create sequence doc_id_seq;<br />

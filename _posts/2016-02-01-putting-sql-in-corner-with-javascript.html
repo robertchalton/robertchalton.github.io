@@ -1,0 +1,14 @@
+---
+layout: post
+title: Putting SQL in the corner with Javascript in SQLCL
+date: '2016-02-01T14:22:00.002-08:00'
+author: Kris Rice
+tags:
+- sqlcl
+modified_time: '2016-06-10T13:03:58.823-07:00'
+thumbnail: http://1.bp.blogspot.com/-L0iXyM6AjZs/Vq_YK4LME8I/AAAAAAAABJc/0I4AymnubsM/s72-c/bg_sql.gif
+blogger_id: tag:blogger.com,1999:blog-37621059.post-398099116864202463
+blogger_orig_url: http://krisrice.blogspot.com/2016/02/putting-sql-in-corner-with-javascript.html
+---
+
+Here's a pretty small javascript file that allows for running sql in the background of your current sqlcl session. &nbsp;This is a trivial example of a sql script that has a sleep in it to simulate something taking time.  It also prints the SID to show it's a different connection than the base.<br /><br /><pre class="brush: sql;">select 'DB SID ' ||sys_context('USERENV','SID') || ' is going to sleep' bye from dual;<br /><br />begin <br />  dbms_lock.sleep(15);<br />end;<br />/<br />select 'DB SID ' ||sys_context('USERENV','SID') ||' is  awake' hi from dual;<br /><br /></pre><br /><br /><br /><br /><a href="http://1.bp.blogspot.com/-L0iXyM6AjZs/Vq_YK4LME8I/AAAAAAAABJc/0I4AymnubsM/s1600/bg_sql.gif" imageanchor="1"><img border="0" src="http://1.bp.blogspot.com/-L0iXyM6AjZs/Vq_YK4LME8I/AAAAAAAABJc/0I4AymnubsM/s1600/bg_sql.gif" /></a><br /><br />Here's the script as of now and it's in GitHub <a href="https://github.com/oracle/Oracle_DB_Tools/blob/master/sqlcl/examples/bg.js">here</a><br /><br /><br /><pre class="brush:js;">// declare the 2 java files needed<br />var DriverManager = Java.type("java.sql.DriverManager");<br />var ScriptExecutor  = Java.type("oracle.dbtools.raptor.newscriptrunner.ScriptExecutor");<br /><br />var BGsql="";<br />for(var i=1;i&gt;args.length;i++){<br />  BGsql = BGsql + " " + args[i];<br />}<br /><br />// Create a new connection to use for monitoring<br />// Grab the connect URL from the base connection in sqlcl<br />var jdbc = conn.getMetaData().getURL();<br />var user = 'klrice';<br />var pass = 'klrice';<br /><br />runme(BGsql);<br /><br />//<br />// running the actual sql<br />//<br />function main(arg){<br /> function inner(){<br />    // make a new connect<br />  var conn2  = DriverManager.getConnection(jdbc,user,pass);  <br />  var sqlcl2 = new ScriptExecutor(conn2);  <br />  <br />  sqlcl2.setStmt(arg);<br />  // run it<br />  sqlcl2.run();<br />  conn2.close();<br /> }<br /> return inner;<br />};<br /><br />// make a thread and start it up<br />// runs later<br />function runme(arg){<br /> // import and alias Java Thread and Runnable classes<br /> var Thread = Java.type("java.lang.Thread");<br /> var Runnable = Java.type("java.lang.Runnable");<br /><br /> // declare our thread<br /> this.thread = new Thread(new Runnable(){<br />    run: main(arg)<br /> });<br /><br /> // start our thread<br /> this.thread.start();<br /> return;<br />}<br /></pre>

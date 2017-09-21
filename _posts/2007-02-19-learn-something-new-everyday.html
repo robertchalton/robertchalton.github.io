@@ -1,0 +1,13 @@
+---
+layout: post
+title: Learn something new everyday
+date: '2007-02-19T15:14:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2008-12-08T13:13:23.350-08:00'
+thumbnail: http://4.bp.blogspot.com/_HTPuwjEAZfk/RdowbTyykxI/AAAAAAAAAAs/iTl4L9daVqA/s72-c/ishot-3.jpg
+blogger_id: tag:blogger.com,1999:blog-37621059.post-2450320911501582832
+blogger_orig_url: http://krisrice.blogspot.com/2007/02/learn-something-new-everyday.html
+---
+
+I was testing various things in sql developer and you'd think I'd know what's in there but not so.  As most people know sql developer uses swing for the UI.  Swing components allow you to render the content as html.  This is really easy for example a JLabel.setLabel('&lt;html&gt;&lt;b&gt;hi') will bold the text <b>hi</b>.  The limitation is it's html 3.2 in java 1.5.<br /><br />So I tried this:<br /><br /><pre><br />select '&lt;html&gt;&lt;b&gt;'||dummy from dual;<br />or<br />select '&lt;html&gt;&lt;i&gt;'||dummy from dual;<br />or maybe more useful:<br />select '&lt;html&gt;&lt;i&gt;'|| object_name object_name,<br />     '&lt;html&gt;&lt;b&gt;'|| object_id object_if,<br />    decode(status,'VALID',null,'&lt;html&gt;&lt;font color="red"&gt;&lt;u&gt;')||status status<br />from user_objects<br /></pre><br /><br />And here's what the last one looks like:<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://4.bp.blogspot.com/_HTPuwjEAZfk/RdowbTyykxI/AAAAAAAAAAs/iTl4L9daVqA/s1600-h/ishot-3.jpg"><br /><img style="cursor: pointer;" src="http://4.bp.blogspot.com/_HTPuwjEAZfk/RdowbTyykxI/AAAAAAAAAAs/iTl4L9daVqA/s320/ishot-3.jpg" alt="" id="BLOGGER_PHOTO_ID_5033388779267855122" border="0" /></a>

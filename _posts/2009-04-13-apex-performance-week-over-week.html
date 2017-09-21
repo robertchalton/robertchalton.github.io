@@ -1,0 +1,13 @@
+---
+layout: post
+title: Apex performance week over week
+date: '2009-04-13T14:15:00.001-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2009-04-13T14:55:24.500-07:00'
+thumbnail: http://1.bp.blogspot.com/_HTPuwjEAZfk/SeOyi1B8gUI/AAAAAAAAANU/0pFQ2qtE36Y/s72-c/apex_perf2.JPG
+blogger_id: tag:blogger.com,1999:blog-37621059.post-8999042142868455224
+blogger_orig_url: http://krisrice.blogspot.com/2009/04/apex-performance-week-over-week.html
+---
+
+I've looking into tuning the public apex.oracle.com.  I could tell from the system standpoint that what we've done has been working.  Now the real test is how is the end user's response times.  I put a quick query together to attempt to measure that.  Here's what I used which shows the trailing 24 hours pitted against the same time period 14 days ago.<br /><br /><br /><pre><br />select t.dt "Hour" ,t.cnt "Today Views" ,round(t.av,2) "Avg time",<br />      l.cnt "2 Week Ago Views",round(l.av,2) "2 Week Ago Avg" , <br />      case when (t.cnt-l.cnt) &gt; 0 then '&lt;span style="color:green;"&gt;'||round((l.cnt/t.cnt)*100) ||'% ('||(t.cnt-l.cnt)||')&lt;/span&gt;' else '&lt;span style="color:red;"&gt;-'||round((l.cnt/t.cnt)*100) ||'% ('||(t.cnt-l.cnt)||')&lt;/span&gt;' end "Count Diff" , <br />      case when (t.av - l.av) &gt; 0 then '&lt;span style="color:red;"&gt;-'||round((l.av/t.av)*100)   ||'% ('||(round((t.av - l.av),2))||')&lt;/span&gt;' else '&lt;span style="color:green;"&gt;'||round((l.av/t.av)*100)|| '% ('||(round((t.av - l.av),2))||')&lt;/span&gt;' end   "Avg Diff"<br />from ( <br />select to_char(time_stamp,'HH24') dt,count(1) cnt,avg(elap) av<br />  from apex_030200.wwv_flow_activity_log<br />  where time_stamp &gt; sysdate - 1<br />group by   to_char(time_stamp,'HH24')<br /> ) t,<br />( select to_char(time_stamp,'HH24') dt,count(1) cnt ,avg(elap) av<br />  from apex_030200.wwv_flow_activity_log<br />  where time_stamp between  sysdate -14 -1 and sysdate -14<br />group by   to_char(time_stamp,'HH24')<br />) l<br />where t.dt = l.dt<br />order by 1<br /></pre><br /><br />Here's the results of the query when run for apex.oracle.com this morning.  From these measure points, it appears what we're doing is working.  <br /><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://1.bp.blogspot.com/_HTPuwjEAZfk/SeOyi1B8gUI/AAAAAAAAANU/0pFQ2qtE36Y/s1600-h/apex_perf2.JPG"><img style="cursor:pointer; cursor:hand;width: 320px; height: 215px;" src="http://1.bp.blogspot.com/_HTPuwjEAZfk/SeOyi1B8gUI/AAAAAAAAANU/0pFQ2qtE36Y/s320/apex_perf2.JPG" border="0" alt=""id="BLOGGER_PHOTO_ID_5324295495902593346" /></a>

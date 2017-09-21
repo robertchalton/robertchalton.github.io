@@ -1,0 +1,13 @@
+---
+layout: post
+title: ORDS and PL/SQL
+date: '2016-03-14T05:56:00.002-07:00'
+author: Kris Rice
+tags: 
+modified_time: '2016-03-14T05:56:53.383-07:00'
+thumbnail: https://4.bp.blogspot.com/-oQLTu_D7ppk/VuazXAPXzUI/AAAAAAAABKk/wcY83jxayn8q8x6czFXhpO6XsQkFmI83A/s72-c/Screen%2BShot%2B2016-03-14%2Bat%2B08.48.43.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-1729016627219707376
+blogger_orig_url: http://krisrice.blogspot.com/2016/03/ords-and-plsql.html
+---
+
+Seems I've never posted about PL/SQL based REST endpoints other than using the OWA toolkit. &nbsp;Doing the htp.p manually can give the control over every aspect of the results however there is an easier way.<br /><br />With PL/SQL based source types, the ins and outs can be used directly without any additional programming. &nbsp;Here's a simple example of an anonymous block doing about as little as possible but should get the point across of what's possible.<br /><br /><a href="http://4.bp.blogspot.com/-oQLTu_D7ppk/VuazXAPXzUI/AAAAAAAABKk/wcY83jxayn8q8x6czFXhpO6XsQkFmI83A/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.48.43.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="https://4.bp.blogspot.com/-oQLTu_D7ppk/VuazXAPXzUI/AAAAAAAABKk/wcY83jxayn8q8x6czFXhpO6XsQkFmI83A/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.48.43.png" /></a>The interesting part is on the Parameters tab. &nbsp;There is where to define the IN , OUT, or IN/OUT. &nbsp;These are a INs can be from the URI or from the HTTP Header. &nbsp;This means if you want USER_AGENT to be useful in the the plsql block just define it and assign it to a bind variable. &nbsp;Here is the :ct and :myval being defined. &nbsp;The :ct is bound to the HTTP HEADER Content-Type. &nbsp;The :myval is bound to RESPONSE. More robust support for UDTs is in the works.<br /><br /><a href="http://2.bp.blogspot.com/-Khg6K5HOMQo/Vuazc4yu7oI/AAAAAAAABKs/zRC1hpjGp2wTqLBOEnHsLJy7DhT1FCS3A/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.48.50.png" imageanchor="1"><img border="0" src="https://2.bp.blogspot.com/-Khg6K5HOMQo/Vuazc4yu7oI/AAAAAAAABKs/zRC1hpjGp2wTqLBOEnHsLJy7DhT1FCS3A/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.48.50.png" /></a><br /><br />Hopefully, this is no surprise as to what the output looks like.<br /><br /><a href="http://1.bp.blogspot.com/-5JTeNNM-pGg/VuazgVvbk9I/AAAAAAAABK0/w0-sJD4AyZ8RWwM5FPVMfta6E0LB3LgzQ/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.49.13.png" imageanchor="1"><img border="0" src="https://1.bp.blogspot.com/-5JTeNNM-pGg/VuazgVvbk9I/AAAAAAAABK0/w0-sJD4AyZ8RWwM5FPVMfta6E0LB3LgzQ/s1600/Screen%2BShot%2B2016-03-14%2Bat%2B08.49.13.png" /></a><br /><br /><br /><br /><br />

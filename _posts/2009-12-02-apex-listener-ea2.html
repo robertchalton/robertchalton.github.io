@@ -1,0 +1,13 @@
+---
+layout: post
+title: Apex Listener EA2
+date: '2009-12-02T11:52:00.000-08:00'
+author: Kris Rice
+tags: 
+modified_time: '2009-12-02T11:52:04.955-08:00'
+thumbnail: http://3.bp.blogspot.com/_HTPuwjEAZfk/SxbEQGGqChI/AAAAAAAAAQs/aDqN0iwdbj8/s72-c/Screenshot.png
+blogger_id: tag:blogger.com,1999:blog-37621059.post-7740728539667506485
+blogger_orig_url: http://krisrice.blogspot.com/2009/12/apex-listener-ea2.html
+---
+
+A new build of the <a href="http://www.oracle.com/technology/products/database/application_express/html/apex_listener_download.html">Application Express Listener</a> was just loaded.&nbsp; This new version adds lots of new features. Check out the <a href="http://www.oracle.com/technology/products/database/application_express/html/apex_listener_install_web.html#CONFIG">Configuration </a>in the install guide.&nbsp; Here's a screenshot of some of the new options available.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_HTPuwjEAZfk/SxbEQGGqChI/AAAAAAAAAQs/aDqN0iwdbj8/s1600-h/Screenshot.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/_HTPuwjEAZfk/SxbEQGGqChI/AAAAAAAAAQs/aDqN0iwdbj8/s640/Screenshot.png" /></a><br /></div><br />Another new thing is in the log file.&nbsp; Every 1000th request I print some statistics to the log file.&nbsp; The statistics include uptime, processing time , min/max/avg/median times for the requests.&nbsp; Here's an example of those statistics where the listener has been up for 9 hours for a total of 16 minutes of processing time to deliver 79.1M of data.<br /><br /><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">Current Time:&nbsp;&nbsp;&nbsp; Wed Dec 02 10:06:02 PST 2009<br />Server uptime:&nbsp;&nbsp; 0 Days 09:01:32.126<br />Total accesses:&nbsp; 1.95K<br />Total Traffic:&nbsp;&nbsp; 79.1M<br />Total Processing Time:&nbsp;&nbsp;&nbsp; 0 Days 00:16:52.965<br />Min/Average/Median/Max Processing Time:&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp; 506&nbsp;&nbsp;&nbsp; 308&nbsp;&nbsp;&nbsp; 12057ms<br />Min/Average/Median/Max DB Time:&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 288&nbsp;&nbsp;&nbsp; 205&nbsp;&nbsp;&nbsp; 9077ms<br />Active Requests:&nbsp;&nbsp;&nbsp; 0<br /><br />1/3 active/available in cache apex<br /></span>
