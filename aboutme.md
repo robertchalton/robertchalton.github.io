@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: null
 published: true
 ---
 ![IMGP0084.JPG]({{site.baseurl}}/img/IMGP0084.JPG)
