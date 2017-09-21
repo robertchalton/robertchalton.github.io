@@ -24,7 +24,7 @@ description: Hopefully some useful stuff
 # List of links in the navigation bar
 navbar-links:
   About Me: "aboutme"
-  Archives : "/archive/"
+  Archives : "http://krisrice.io/archive/"
   Resources:
     - REST Data Services : "http://www.oracle.com/rest"
     - SQL Developer : "http://www.oracle.com/sqldeveloper"
