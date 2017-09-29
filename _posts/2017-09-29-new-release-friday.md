@@ -2,7 +2,6 @@
 layout: post
 published: true
 title: New Release Friday
-subtitle: Q3 2017 releases
 ---
 ## Download now !
 
