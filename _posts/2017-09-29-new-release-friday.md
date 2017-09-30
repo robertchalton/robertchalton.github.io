@@ -9,10 +9,10 @@ title: New Release Friday
 
 - SQL Developer 17.3 [Download](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html) 
 - SQL Developer Data Modeler 17.3 [Download](http://www.oracle.com/technetwork/developer-tools/datamodeler/downloads/index.html)  - NoSQL version 4.5.12 supported
-  - Cart enhancements
   - Autonomous Database Cloud Service support
   - Lots and logs of feature enahancements 
-  
+  - Pasting in Code with Line Numbers, parser offers to remove line numbers 
+  - DEFAULT connection CURRENT connection FOR NEW connections 
 
 - SQLcl 17.3 [Download](http://www.oracle.com/technetwork/developer-tools/sqlcl/downloads/index.html)
   - Tnsping fixed 
@@ -29,5 +29,3 @@ title: New Release Friday
   - Java 9 supported
   - HTTP2 supported
   - Try out the new [SQL over REST](http://krisrice.io/2017-09-14-demo-app-for-rest-enabled-sql/) and Swagger generation
-
-
