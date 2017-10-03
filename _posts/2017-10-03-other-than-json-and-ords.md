@@ -1,6 +1,6 @@
 ---
 layout: post
-published: true
+published: false
 title: 'Other than JSON and ORDS '
 ---
 ## REST enabling PL/SQL
@@ -78,4 +78,3 @@ A new feature in ORDS 17.3 is the generation of [OpenAPI definitions](https://gi
 ## Calling the API
 
 ![post_body_bind.png]({{site.baseurl}}/img/post_body_bind.png)
-
