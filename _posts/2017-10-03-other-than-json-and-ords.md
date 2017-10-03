@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: 'Other than JSON and ORDS '
 ---
 ## REST enabling PL/SQL
