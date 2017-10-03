@@ -37,8 +37,45 @@ A new feature in ORDS 17.3 is the generation of [OpenAPI definitions](https://gi
 
 
 {% highlight JavaScript %}
-{"swagger":"2.0","info":{"title":"ORDS generated API for TIMESTAMPLTZ_INOUT_PROC","version":"1.0.0"},"host":"localhost:9090","basePath":"/ords/klrice/timestampltz_inout_proc","schemes":["http"],"produces":["application/json"],"paths":{"/":{"post":{"produces":["application/json"],"responses":{"200":{"description":"output of the endpoint","schema":{"type":"object","properties":{}}}}}}}}
+{  
+   "swagger":"2.0",
+   "info":{  
+      "title":"ORDS generated API for TIMESTAMPLTZ_INOUT_PROC",
+      "version":"1.0.0"
+   },
+   "host":"localhost:9090",
+   "basePath":"/ords/klrice/timestampltz_inout_proc",
+   "schemes":[  
+      "http"
+   ],
+   "produces":[  
+      "application/json"
+   ],
+   "paths":{  
+      "/":{  
+         "post":{  
+            "produces":[  
+               "application/json"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"output of the endpoint",
+                  "schema":{  
+                     "type":"object",
+                     "properties":{  
+
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
 {% endhighlight %}
 
 
-##
+## Calling the API
+
+![post_body_bind.png]({{site.baseurl}}/img/post_body_bind.png)
+
