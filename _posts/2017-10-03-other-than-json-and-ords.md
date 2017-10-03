@@ -1,7 +1,7 @@
 ---
 layout: post
 published: false
-title: 'Other than JSON and ORDS '
+title: Leverage PLSQL from JavaScript
 ---
 ## REST enabling PL/SQL
 
@@ -72,9 +72,26 @@ A new feature in ORDS 17.3 is the generation of [OpenAPI definitions](https://gi
       }
    }
 }
+
 {% endhighlight %}
 
 
-## Calling the API
+## Postman Import
 
-![post_body_bind.png]({{site.baseurl}}/img/post_body_bind.png)
+Postman has an import feature which takes in the link for the swagger json above. Once it's imported the tool makes a Collection in the sidebar for everything imported. 
+
+![postman_timez_jquery.png]({{site.baseurl}}/img/postman_timez_jquery.png)
+
+
+## Getting the JQuery
+
+Getting the jquery code is just 2 more clicks away. Click the Code in the right hand side, choose the language which included much more than just JavaScript->JQuery and there's a sample generated for inclusion in your code.
+
+![postman_timez_jquery.png]({{site.baseurl}}/img/postman_timez_jquery.png)
+
+# Summary
+- 1 PLSQL API call to enable the procedure
+- Get the URL for the automatically generated Swagger JSON
+- Import into Postman
+- Get working code.
+- Now leveraging existing pl/sql logic from anywhere.
