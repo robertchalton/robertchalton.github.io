@@ -80,7 +80,8 @@ A new feature in ORDS 17.3 is the generation of [OpenAPI definitions](https://gi
 
 Postman has an import feature which takes in the link for the swagger json above. Once it's imported the tool makes a Collection in the sidebar for everything imported. 
 
-![postman_timez_jquery.png]({{site.baseurl}}/img/postman_timez_jquery.png)
+![postman_timez.png]({{site.baseurl}}/img/postman_timez.png)
+
 
 
 ## Getting the JQuery
