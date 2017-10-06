@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: Migrating my blog from Blogger to GitHub Pages with Jekyll
+title: 'Migrating from Blogger to GitHub Pages '
 subtitle: My migration from blogger.com to pages.github.com
 ---
 ## Jekyll
