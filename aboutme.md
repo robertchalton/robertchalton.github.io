@@ -4,7 +4,7 @@ title: whoami
 subtitle: null
 published: true
 ---
-![Screen Shot 2017-09-21 at 1.25.21 PM.png]({{site.baseurl}}/img/Screen Shot 2017-09-21 at 1.25.21 PM.png)
+![aboutme.png]({{site.baseurl}}/img/aboutme.png)
 
 
 
