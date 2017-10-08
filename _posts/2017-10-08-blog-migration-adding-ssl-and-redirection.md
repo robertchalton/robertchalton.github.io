@@ -59,3 +59,10 @@ window.location=newurl;
 
 {% endhighlight %}
 
+
+## Add Javascript to Blogger
+
+Last thing now is just add this javascript to blogger. I just added a "HTML/JavaScript Gadget" and put it in there and now everything redirects to the new site. Now my old blog is my new blog's biggest reffer in google analytics.
+
+![Screen Shot 2017-10-08 at 8.32.50 AM.png]({{site.baseurl}}/img/Screen Shot 2017-10-08 at 8.32.50 AM.png)
+
