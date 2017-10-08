@@ -7,7 +7,6 @@ published: true
 ![aboutme.png]({{site.baseurl}}/img/aboutme.png)
 
 
-
 I build various tools mostly about working with the oracle database and lots of automation around the various datbase cloud offering.
 
 
