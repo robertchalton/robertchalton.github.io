@@ -1,29 +1,32 @@
 ---
 layout: post
-published: false
+published: true
 title: OSX Proxies
+date: '2018-01-30'
 ---
-## A New Post
+## Swapping proxies 
+
+I frequently switch from inside a network that needs a proxy to being on public internet.  Swapping the proxy on/off is less than easy for things like github so here's the script I use.
+
+The script uses the osx utility scutil with --proxy to get the current proxy configuration. Then it's a simple if/then to set to unset various proxy settings.
 
 
 {% highlight shell %}
-  proxy=`scutil --proxy | grep ProxyAutoConfigEnable | awk -F: '{print $2}'`
- 23 
- 24 echo Proxy  :$proxy:
- 25 if [[ "$proxy" == " 1" ]] ; then
- 26   echo Proxy On
- 27    git config --global https.https://github.com.proxy http://www-proxy.us.oracle.com:80
- 28    git config --global http.https://github.com.proxy http://www-proxy.us.oracle.com:80
- 29    export http_proxy=http://www-proxy.us.oracle.com:80/
- 30    export https_proxy=http://www-proxy.us.oracle.com:80/
- 31    export MAVEN_OPTS="-Dhttp.proxyHost=www-proxy.us.oracle.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=www-proxy.us.oracle.com -Dhttps.proxyPort=80"
- 32 else
- 33   echo Proxy Off
- 34   git config --global --unset http.https://github.com.proxy
- 35   git config --global --unset https.https://github.com.proxy
- 36   export http_proxy=
- 37   export https_proxy=
- 38 fi
- 39 
-
+  proxy=`scutil --proxy | grep ProxyAutoConfigEnable | awk -F: '{print $2}'` 
+  echo Proxy  :$proxy:
+  if [[ "$proxy" == " 1" ]] ; then
+    echo Proxy On
+     git config --global https.https://github.com.proxy http://ourcorpproxy.com:80
+     git config --global http.https://github.com.proxy http://ourcorpproxy.com:80
+     export http_proxy=http://ourcorpproxy.com:80/
+     export https_proxy=http://ourcorpproxy.com:80/
+     export MAVEN_OPTS="-Dhttp.proxyHost=ourcorpproxy.com -Dhttp.proxyPort=80 -Dhttps.proxyHost=ourcorpproxy.com -Dhttps.proxyPort=80"
+  else
+    echo Proxy Off
+    git config --global --unset http.https://github.com.proxy
+    git config --global --unset https.https://github.com.proxy
+    export http_proxy=
+    export https_proxy=
+  fi
+  
 {% endhighlight %}
