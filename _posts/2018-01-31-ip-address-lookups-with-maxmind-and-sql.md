@@ -3,7 +3,6 @@ layout: post
 published: true
 title: IP Address lookups with MaxMind and SQL
 date: '2018-01-31'
-image: img/maxmind-asn-thumbnail.png
 ---
 
 # Lookup who owns an IP address
@@ -35,6 +34,3 @@ Here's the github repo where I started this [oracle-maxmind](https://github.com/
 # Next Steps
 
 The next things to do is add Country,City. and IPv6 which is in the csv files
-
-
-
