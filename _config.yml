@@ -23,7 +23,7 @@ description: Hopefully some useful stuff
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
+  About Me: "https://stackoverflow.com/cv/krisrice"
   Archives : "http://krisrice.io/archive/"
   Resources:
     - REST Data Services : "http://www.oracle.com/rest"
