@@ -43,7 +43,7 @@ SUM:                           1269          32742          80509         315540
 
 Just in case that's not obvious enough..
 
-The [https://github.com/oracle/dbtools-commons]() is organized into a few folders.
+The [https://github.com/oracle/dbtools-commons](https://github.com/oracle/dbtools-commons) is organized into a few folders.
 
 - common - base library 
 - http - thin wrapper over apache http client that we use
