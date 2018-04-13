@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: 'Open Sourcing dbtools-commons, SQLcl, and more'
 date: '2018-04-12'
 ---
