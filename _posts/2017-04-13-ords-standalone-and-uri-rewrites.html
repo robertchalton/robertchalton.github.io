@@ -5,9 +5,80 @@ date: '2017-04-13T08:45:00.000-07:00'
 author: Kris Rice
 tags: 
 modified_time: '2017-04-13T08:45:00.514-07:00'
-thumbnail: https://4.bp.blogspot.com/-K9h2K80cAxM/WO-bIpvUlZI/AAAAAAAABPs/T_at8DO3ue0spwrTywhIBiqBKWkD6gaZwCK4B/s72-c/Screen%2BShot%2B2017-04-13%2Bat%2B11.36.30%2BAM.png
-blogger_id: tag:blogger.com,1999:blog-37621059.post-8929186596639506246
-blogger_orig_url: http://krisrice.blogspot.com/2017/04/ords-standalone-and-uri-rewrites.html
+
 ---
 
-<div dir="ltr" style="text-align: left;" trbidi="on"><div dir="ltr" style="text-align: left;" trbidi="on">My last post How to add an <a href="http://krisrice.blogspot.com/2017/01/how-to-add-ncsa-style-access-log-to.html">NCSA style Access Log to ORDS Standalone</a>&nbsp;explained what the ORDS standalone is and that is based on Eclipse Jetty. &nbsp;Jetty offers far more than ORDS exposed in it's standalone. &nbsp;There's a long list of all the features and configuration options listed in the documentation,&nbsp;<a href="http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/">http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/</a><br /><br />A recent question came up for doing URL rewrites. &nbsp;Jetty does offer this as well. &nbsp;To take advantage of it the same jetty-http.xml file from my last post just needs a few more lines of xml added.<br /><br /><div>This example will be just a simple one that rewrites /catalog to /ords/klrice/metadata-catalog/ The better usage of this would be to have / redirect into an APEX application or some home page of the application.</div><div><br /></div><div>The full list of options are listed in the Jetty Documentation&nbsp;</div></div><a href="http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html">http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html</a><br /><br /><br /><br /><pre style="brush: xml;">&lt;?xml version="1.0"?&gt;<br />&lt;!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd"&gt;<br />&lt;Configure id="Server" class="org.eclipse.jetty.server.Server"&gt;</pre><pre style="brush: xml;"></pre><pre style="brush: xml;">&lt;!-- REWRITE --&gt;<br />  &lt;Get id="oldhandler" name="handler"/&gt;<br />  &lt;Set name="handler"&gt;<br />   &lt;New id="Rewrite" class="org.eclipse.jetty.rewrite.handler.RewriteHandler"&gt;<br />    &lt;Set name="handler"&gt;&lt;Ref refid="oldhandler"/&gt;&lt;/Set&gt;<br />    &lt;Set name="rewriteRequestURI"&gt;&lt;Property name="rewrite.rewriteRequestURI" default="true"/&gt;&lt;/Set&gt;<br />    &lt;Set name="rewritePathInfo"&gt;&lt;Property name="rewrite.rewritePathInfo" default="false"/&gt;&lt;/Set&gt;<br />    &lt;Set name="originalPathAttribute"&gt;&lt;Property name="rewrite.originalPathAttribute" default="requestedPath"/&gt;&lt;/Set&gt;<br />   &lt;/New&gt;<br />  &lt;/Set&gt;<br />  &lt;Ref refid="Rewrite"&gt;<br /></pre><pre style="brush: xml;"><pre style="brush: xml;">&lt;!-- REWRITE of /catalog ---- /ords/klrice/metadata-catalog/ --&gt;<br /></pre><div></div>&lt;Call name="addRule"&gt;          &lt;Arg&gt;            &lt;New class="org.eclipse.jetty.rewrite.handler.RewritePatternRule"&gt;              &lt;Set name="pattern"&gt;/catalog&lt;/Set&gt;              &lt;Set name="replacement"&gt;/ords/klrice/metadata-catalog/&lt;/Set&gt;            &lt;/New&gt;          &lt;/Arg&gt;        &lt;/Call&gt; &lt;/Ref&gt;</pre><pre style="brush: xml;">&lt;!-- HTTP ACCESS LOGS --&gt;<br />  &lt;Ref id="Handlers"&gt;<br />    &lt;Call name="addHandler"&gt;<br />      &lt;Arg&gt;<br />        &lt;New id="RequestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler"&gt;<br />          &lt;Set name="requestLog"&gt;<br />            &lt;New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog"&gt;<br />              &lt;Set name="filename"&gt;&lt;Property name="jetty.logs" default="/tmp/"/&gt;ords-access-yyyy_mm_dd.log&lt;/Set&gt;<br />              &lt;Set name="filenameDateFormat"&gt;yyyy_MM_dd&lt;/Set&gt;<br />              &lt;Set name="retainDays"&gt;90&lt;/Set&gt;<br />              &lt;Set name="append"&gt;true&lt;/Set&gt;<br />              &lt;Set name="extended"&gt;false&lt;/Set&gt;<br />              &lt;Set name="logCookies"&gt;false&lt;/Set&gt;<br />              &lt;Set name="LogTimeZone"&gt;GMT&lt;/Set&gt;<br />            &lt;/New&gt;<br />          &lt;/Set&gt;<br />        &lt;/New&gt;<br />      &lt;/Arg&gt;<br />    &lt;/Call&gt;<br />  &lt;/Ref&gt;<br />&lt;/Configure&gt;<br /><br /><br /></pre><br /><br />The result is as expected. &nbsp;This could be used for anything from shorter REST points like this catalog example or nicer entry points into APEX application.<br /><br /><a href="http://4.bp.blogspot.com/-K9h2K80cAxM/WO-bIpvUlZI/AAAAAAAABPs/T_at8DO3ue0spwrTywhIBiqBKWkD6gaZwCK4B/s1600/Screen%2BShot%2B2017-04-13%2Bat%2B11.36.30%2BAM.png" imageanchor="1"><img border="0" height="640" src="https://4.bp.blogspot.com/-K9h2K80cAxM/WO-bIpvUlZI/AAAAAAAABPs/T_at8DO3ue0spwrTywhIBiqBKWkD6gaZwCK4B/s640/Screen%2BShot%2B2017-04-13%2Bat%2B11.36.30%2BAM.png" width="594" /></a><br /><br />The example for an APEX URL would be:<br /><pre style="brush: xml;"><br /></pre><pre style="brush: xml;">&lt;!-- REWRITE of /awesomeapp ---- /ords/f?p=105:2:::::: --&gt;</pre><div><br /></div><pre style="brush: xml;">&lt;Call name="addRule"&gt;<br /> &lt;Arg&gt;<br />   &lt;New class="org.eclipse.jetty.rewrite.handler.RewritePatternRule"&gt;<br />     &lt;Set name="pattern"&gt;/awesomeapp&lt;/Set&gt;<br />     &lt;Set name="replacement"&gt;/ords/f?p=105:2::::::/&lt;/Set&gt;<br />   &lt;/New&gt;<br /> &lt;/Arg&gt;<br />&lt;/Call&gt;</pre></div>
+
+My last post How to add an [NCSA style Access Log](http://krisrice.io/2017-01-12-how-to-add-ncsa-style-access-log-to/) to ORDS Standalone explained what the ORDS standalone is and that is based on Eclipse Jetty.  Jetty offers far more than ORDS exposed in it's standalone.  There's a long list of all the features and configuration options listed in the documentation, [http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/](http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/)
+
+A recent question came up for doing URL rewrites.  Jetty does offer this as well.  To take advantage of it the same jetty-http.xml file from my last post just needs a few more lines of xml added.
+
+This example will be just a simple one that rewrites /catalog to /ords/klrice/metadata-catalog/ The better usage of this would be to have / redirect into an APEX application or some home page of the application.
+
+The full list of options are listed in the Jetty Documentation 
+[http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html
+](http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html)
+
+```
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+<!-- REWRITE -->
+  <Get id="oldhandler" name="handler"/>
+  <Set name="handler">
+   <New id="Rewrite" class="org.eclipse.jetty.rewrite.handler.RewriteHandler">
+    <Set name="handler"><Ref refid="oldhandler"/></Set>
+    <Set name="rewriteRequestURI"><Property name="rewrite.rewriteRequestURI" default="true"/></Set>
+    <Set name="rewritePathInfo"><Property name="rewrite.rewritePathInfo" default="false"/></Set>
+    <Set name="originalPathAttribute"><Property name="rewrite.originalPathAttribute" default="requestedPath"/></Set>
+   </New>
+  </Set>
+  <Ref refid="Rewrite">
+<!-- REWRITE of /catalog ---- /ords/klrice/metadata-catalog/ -->
+<Call name="addRule">          <Arg>            <New class="org.eclipse.jetty.rewrite.handler.RewritePatternRule">              <Set name="pattern">/catalog</Set>              <Set name="replacement">/ords/klrice/metadata-catalog/</Set>            </New>          </Arg>        </Call> </Ref>
+<!-- HTTP ACCESS LOGS -->
+  <Ref id="Handlers">
+    <Call name="addHandler">
+      <Arg>
+        <New id="RequestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler">
+          <Set name="requestLog">
+            <New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">
+              <Set name="filename"><Property name="jetty.logs" default="/tmp/"/>ords-access-yyyy_mm_dd.log</Set>
+              <Set name="filenameDateFormat">yyyy_MM_dd</Set>
+              <Set name="retainDays">90</Set>
+              <Set name="append">true</Set>
+              <Set name="extended">false</Set>
+              <Set name="logCookies">false</Set>
+              <Set name="LogTimeZone">GMT</Set>
+            </New>
+          </Set>
+        </New>
+      </Arg>
+    </Call>
+  </Ref>
+</Configure>
+
+```
+
+
+The result is as expected.  This could be used for anything from shorter REST points like this catalog example or nicer entry points into APEX application.
+
+![ScreenShot](https://4.bp.blogspot.com/-K9h2K80cAxM/WO-bIpvUlZI/AAAAAAAABPs/T_at8DO3ue0spwrTywhIBiqBKWkD6gaZwCK4B/s640/Screen%2BShot%2B2017-04-13%2Bat%2B11.36.30%2BAM.png)
+
+
+
+The example for an APEX URL would be:
+
+```
+<!-- REWRITE of /awesomeapp ---- /ords/f?p=105:2:::::: -->
+
+<Call name="addRule">
+ <Arg>
+   <New class="org.eclipse.jetty.rewrite.handler.RewritePatternRule">
+     <Set name="pattern">/awesomeapp</Set>
+     <Set name="replacement">/ords/f?p=105:2::::::/</Set>
+   </New>
+ </Arg>
+</Call>
+```
+
