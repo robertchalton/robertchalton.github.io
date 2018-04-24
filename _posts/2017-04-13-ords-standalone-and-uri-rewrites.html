@@ -2,10 +2,10 @@
 layout: post
 published: true
 title: ORDS Standalone and URI Rewrites
-date: '2017-04-13T08:45:00.000-07:00'
-modified_time: '2017-04-13T08:45:00.514-07:00'
----
+date: '2018-04-24'
 
+---
+# Adding a Simple URL Rewrite
 
 My last post How to add an [NCSA style Access Log](http://krisrice.io/2017-01-12-how-to-add-ncsa-style-access-log-to/) to ORDS Standalone explained what the ORDS standalone is and that is based on Eclipse Jetty.  Jetty offers far more than ORDS exposed in it's standalone.  There's a long list of all the features and configuration options listed in the documentation, [http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/](http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/)
 
@@ -16,6 +16,7 @@ This example will be just a simple one that rewrites /catalog to /ords/klrice/me
 The full list of options are listed in the Jetty Documentation 
 [http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html
 ](http://www.eclipse.org/jetty/documentation/9.2.21.v20170120/rewrite-handler.html)
+
 
 ```
 <?xml version="1.0"?>
