@@ -14,10 +14,10 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: DB Tools Blog
+title: DB Tools and Cloud Ramblings
 
 # Short description of your site
-description: Hopefully some useful stuff
+description: This blog is mostly centered around Oracle Database Development tools and various Oracle DB Cloud offerings
 
 # --- Navigation bar options --- #
 
@@ -121,7 +121,7 @@ google_analytics: "UA-10811078-2"
 
 # Excerpt Word Length
 # Truncates the excerpt to the specified number of words on the index page
-excerpt_length: 50
+excerpt_length: 25
 
 # Character used to separate site title and description in HTML document title
 # and RSS feed title
