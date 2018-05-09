@@ -16,16 +16,16 @@ ORDS standalone mode will create a self-signed certificate upon install just to 
 
 Installing a real certificate is quite straight forward and in the [documentation](https://docs.oracle.com/en/cloud/paas/database-dbaas-cloud/csdbi/administer-ords.html#GUID-CFF2853B-1375-4F71-9600-69347A47A291)
 
-1. Aquire a Certificate
+* Aquire a Certificate
 
-2. (optional) If the key file is in .pem format, create a .der file 
+* (optional) If the key file is in .pem format, create a .der file 
 
 	```
 	openssl pkcs8 -topk8 -inform PEM -outform DER -in demo.example.com.pem -out demo.example.com.der -nocrypt
 	```
 
 
-3. Edit the ords/standalone/standalone.properties
+* Edit the ords/standalone/standalone.properties
 
 	``` 
 	ssl.cert=/u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.crt
@@ -34,7 +34,7 @@ Installing a real certificate is quite straight forward and in the [documentatio
 		
 > This is the path in Oracle Cloud DBCS that is the ORDS configuration /u01/app/oracle/product/ords/conf/ords/standalone/
 
-4. Restart ORDS. 
+* Restart ORDS. 
 
 ## Let's Encrypt Setup Options
 
