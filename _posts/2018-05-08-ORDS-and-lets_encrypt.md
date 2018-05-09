@@ -20,17 +20,18 @@ Installing a real certificate is quite straight forward and in the [documentatio
 
 2. (optional) If the key file is in .pem format, create a .der file 
 
-		```
-		openssl pkcs8 -topk8 -inform PEM -outform DER -in example.com.pem -out example.com.der -nocrypt
-		```
+	```
+	openssl pkcs8 -topk8 -inform PEM -outform DER -in demo.example.com.pem -out demo.example.com.der -nocrypt
+	```
 
 
 3. Edit the ords/standalone/standalone.properties
 
-		``` 
-		ssl.cert=/u01/app/oracle/product/ords/conf/ords/standalone/example.com.crt
-		ssl.cert.key=/u01/app/oracle/product/ords/conf/ords/standalone/example.com.der
-		```
+	``` 
+	ssl.cert=/u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.crt
+	ssl.cert.key=/u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.der
+	```
+		
 > This is the path in Oracle Cloud DBCS that is the ORDS configuration /u01/app/oracle/product/ords/conf/ords/standalone/
 
 4. Restart ORDS. 
@@ -43,7 +44,7 @@ There's lots of prebuilt integrations that Let's Encrypt. For example, if the OR
 ## GetSSL
 Since there's no prebuilt tool for dealing with ORDS. I'll be using  [GetSSL](https://github.com/srvrco/getssl) to aquiring a cert. 
 
-These are just my steps and probably other ways to get it done.
+These are just my steps to get the cerificate working in an Oracle Cloud DBCS installation. I'm sure there are other ways to accomplish the same result.
 
 * Install   
 
@@ -53,11 +54,11 @@ These are just my steps and probably other ways to get it done.
 
 * Initialize the configuration files
 
-	```./getssl -c demo.krisrice.io```
+	```./getssl -c demo.example.com```
 
 * Edit the configuration to site specifics.
 
-	In the file ~/.getssl/demo.krisrice.io/getssl.cfg , These are the only settings I adjusted.
+	In the file ~/.getssl/demo.example.com/getssl.cfg , These are the only settings I adjusted.
 
 	```
 	PRIVATE_KEY_ALG="rsa"
@@ -77,12 +78,12 @@ These are just my steps and probably other ways to get it done.
 * Convert the Let's Encrypt .key file to a .der that ORDS can use
 
 	```
-	openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in /u01/app/oracle/product/ords/conf/ords/standalone/example.com.key -out /u01/app/oracle/product/ords/conf/ords/standalone/example.com.pkcs8.key
+	openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in /u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.key -out /u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.pkcs8.key
 	
-	openssl pkcs8 -topk8 -inform PEM -outform DER -in /u01/app/oracle/product/ords/conf/ords/standalone/example.com.pkcs8.key -out /u01/app/oracle/product/ords/conf/ords/standalone/example.com.pkcs8.der -nocrypt
+	openssl pkcs8 -topk8 -inform PEM -outform DER -in /u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.pkcs8.key -out /u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.pkcs8.der -nocrypt
 	
 	# remove temp file
-	rm /u01/app/oracle/product/ords/conf/ords/standalone/example.com.pkcs8.key
+	rm /u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.pkcs8.key
 	
 	```	
 
@@ -92,8 +93,8 @@ These are just my steps and probably other ways to get it done.
 	Edit /u01/app/oracle/product/ords/conf/ords/standalone/standalone.properties
 	
 	```
-	ssl.cert=/u01/app/oracle/product/ords/conf/ords/standalone/example.com.crt
-	ssl.cert.key=/u01/app/oracle/product/ords/conf/ords/standalone/example.com.pkcs8.der
+	ssl.cert=/u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.crt
+	ssl.cert.key=/u01/app/oracle/product/ords/conf/ords/standalone/demo.example.com.pkcs8.der
 	```
 
 
