@@ -5,3 +5,5 @@ gem 'jekyll-paginate'
 gem "jekyll-assets"
 gem "jekyll-minify-html"
 
+
+gem "jekyll-mermaid", "~> 1.0"

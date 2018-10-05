@@ -104,6 +104,7 @@ GEM
       activesupport (~> 4.0)
       html-pipeline (~> 2.3)
       jekyll (~> 3.0)
+    jekyll-mermaid (1.0.0)
     jekyll-minify-html (1.1.0)
       html_press (~> 0.8.2)
       jekyll (>= 0.12)
@@ -187,8 +188,9 @@ PLATFORMS
 DEPENDENCIES
   github-pages (= 106)
   jekyll-assets
+  jekyll-mermaid (~> 1.0)
   jekyll-minify-html
   jekyll-paginate
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.6
