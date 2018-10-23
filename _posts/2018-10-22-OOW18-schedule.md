@@ -50,7 +50,7 @@ In this session learn to develop and deploy a RESTful service using Oracle SQL D
 
 >Where: Marriott Marquis (Yerba Buena Level) - Salon 3/4
 
-### 11:15-1:00 Finally: DevOps for Databases
+### 11:15-12:00 Finally: DevOps for Databases
 DevOps has become a common practice in the IT world. Many development teams use DevOps today to reduce turnaround times and get to market faster. Naturally, people in the administrative world are looking at what DevOps can do for them. After all, DevOps is short for Development and Operations. Yet there still seems to be a wider gap to adopting DevOps than there should be. Lots of tasks are still done manually and increase the turnaround time for no good reason. Attend this session to learn more.
 
 
