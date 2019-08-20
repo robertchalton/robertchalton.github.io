@@ -63,7 +63,7 @@ GEM
       typhoeus (~> 0.7)
     html-pipeline (2.10.0)
       activesupport (>= 2)
-      nokogiri (>= 1.4)
+      nokogiri (>= 1.10.4)
     html_press (0.8.2)
       htmlentities
       multi_css (>= 0.1.0)
