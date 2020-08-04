@@ -1,3 +1,11 @@
+---
+layout: post
+published: true
+title: 'SQLcl and OCI Cloud Shell'
+date: '2020-08-04'
+
+---
+
 # Cloud Shell w/ SQLcl
 
 SQLcl is now included with OCI Cloud Shell. 
