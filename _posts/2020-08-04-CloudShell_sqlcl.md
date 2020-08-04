@@ -18,7 +18,9 @@ Autonomous DB requires a wallet to connect. This can be done via the `oci` cli w
 The wallet can be generated quickly with the cli as follows. 
 
 ```
+
 oci db autonomous-database generate-wallet --autonomous-database-id ocid1.autonomousdatabase.oc1.iad..... --file <filename> --password <password>
+
 ```
 
 The OCID of the database is required which is easily found in the OCI Console.
@@ -34,7 +36,9 @@ This script prints all DBs in a compartment. which requires a compartment-id. Lu
 
 That list is a nicely formatted json document which has all the needed information. 
 
-```oci db autonomous-database list --compartment-id $OCI_TENANCY
+```
+
+oci db autonomous-database list --compartment-id $OCI_TENANCY
 {
   "data": [
     {
@@ -63,6 +67,7 @@ EOF
 ```
 
 To use this simply pipe the output as follows
+
 ```
 oci db autonomous-database list --compartment-id $OCI_TENANCY | jq  -r -f db.jq
 ```
