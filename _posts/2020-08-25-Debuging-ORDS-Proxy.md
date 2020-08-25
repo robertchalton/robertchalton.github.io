@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: 'Debuging ORDS Proxy Connection Issues'
+title: 'Debugging ORDS Proxy Connection Issues'
 date: '2020-08-25'
 
 ---
