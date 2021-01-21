@@ -35,9 +35,9 @@ System.out.println("The total connetion count in the pool is "+ totalConnsCount 
 
 ```
 
-## ORDS Instnace API
+## ORDS Instance API
 
-ORDS 20.4 adds a new set of REST APIs defined specifically to monitor the connection pools. This new feature is named the [Instanace API](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/20.4/aelig/installing-REST-data-services.html#GUID-116149DE-01E1-4056-A723-0EFB96737377)
+ORDS 20.4 adds a new set of REST APIs defined specifically to monitor the connection pools. This new feature is named the [Instance API](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/20.4/aelig/installing-REST-data-services.html#GUID-116149DE-01E1-4056-A723-0EFB96737377)
 
 
 This new API does require a flag to enable it and a user with appropriate role assigned to access. Once enabled, there are a few new REST endpoints defined with an OpenAPI specification.
