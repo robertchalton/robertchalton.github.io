@@ -20,7 +20,7 @@ ___________
 
 This is can work when it's a small system with 1 or 2 database pools defined in ORDS. However, there are ORDS instances which have 1000s of connection pools servicing 1000s of PDBs spread across many many CDBs. This large of a setup makes it very painful to query every CDB/PDB to find out how the pools are doing in the instance. 
 
-Then with High Availablity added to the mix with multiple ords instances things can get more complicated by quering the originating machine for a db connection also.
+Then with High Availability added to the mix with multiple ords instances things can get more complicated by querying the originating machine for a db connection also.
 
 ## UCP Pool Statistics
 
@@ -31,7 +31,7 @@ PoolDataSource pds = PoolDataSourceFactory.getPoolDataSource();
 ...
 ...
 int totalConnsCount = pds.getStatistics().getTotalConnectionsCount();
-System.out.println("The total connetion count in the pool is "+ totalConnsCount +".");
+System.out.println("The total connection count in the pool is "+ totalConnsCount +".");
 
 ```
 
@@ -49,6 +49,36 @@ The new APIs can list the over all pool status(es), the list of pools and the st
 
 This is a bare bones html page that uses the API to show the statics of the pool while there is a test of 2k http requests being issued.  There's a lot of detail in this API ranging from the most simple `borrowedConnectionsCount` which is the connections currently being used to things like the wait time to getting a connection. 
 
+## Instance API Setup
+
+The thing to note is this is an ORDS level API across ALL connection pools so there is no database user nor database roles that can be used to gain access to this API. That would not really make security sense to look into a pool on database A from a credential on database B.  This is going to require a webserver/ords level user and role to be assigned. This can be done many ways depending on the webserver being used to host ords. For example, in Tomcat there is a tomcat-users.xml.  
+
+To use the ORDS built in user, issue this to create a user named "instanceAPI"
+
+
+```
+ java  -jar ords.war user instanceAPI "Listener Administrator,System Administrator"
+
+ ```
+
+This can be verified checking the `credentials` file and notice the user is created and the roles are a csv on the last segment
+
+```
+
+➜  more ords/credentials
+instanceAPI;{SSHA-512}<...>;Listener Administrator,System Administrator
+```
+
+The other step to enabling is to enable the feature in the ords/defaults.xml
+
+
+```
+java -jar ords.war set-property instance.api.enabled true
+```
+
+
+
+## Trivial HTML for above example
 
 ![](/img/ords_pools_monitor.gif)
 
