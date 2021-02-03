@@ -78,7 +78,7 @@ java -jar ords.war set-property instance.api.enabled true
 
 
 
-## Trivial HTML for above example
+## Trivial HTML for example
 
 ![](/img/ords_pools_monitor.gif)
 
