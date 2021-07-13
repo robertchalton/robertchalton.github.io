@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'github-pages', '106'
+gem 'github-pages' 
 gem 'jekyll-paginate'
 gem "jekyll-assets"
 gem "jekyll-minify-html"
-
-
-gem "jekyll-mermaid", "~> 1.0"
+gem "jekyll-mermaid"
+gem "sprockets", "~> 3.7"
