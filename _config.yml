@@ -14,7 +14,7 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: DB Tools and Cloud Ramblings
+title: Oracle ORDS and APEX
 
 # Short description of your site
 description: This blog is mostly centered around Oracle Database Development tools and various Oracle DB Cloud offerings
